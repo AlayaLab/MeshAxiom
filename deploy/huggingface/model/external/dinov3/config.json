@@ -1,0 +1,32 @@
+{
+  "architectures": [
+    "DINOv3ViTModel"
+  ],
+  "attention_dropout": 0.0,
+  "drop_path_rate": 0.0,
+  "hidden_act": "gelu",
+  "hidden_size": 1024,
+  "image_size": 224,
+  "initializer_range": 0.02,
+  "intermediate_size": 4096,
+  "key_bias": false,
+  "layer_norm_eps": 1e-05,
+  "layerscale_value": 1.0,
+  "mlp_bias": true,
+  "model_type": "dinov3_vit",
+  "num_attention_heads": 16,
+  "num_channels": 3,
+  "num_hidden_layers": 24,
+  "num_register_tokens": 4,
+  "patch_size": 16,
+  "pos_embed_jitter": null,
+  "pos_embed_rescale": 2.0,
+  "pos_embed_shift": null,
+  "proj_bias": true,
+  "query_bias": true,
+  "rope_theta": 100.0,
+  "torch_dtype": "float32",
+  "transformers_version": "4.56.0.dev0",
+  "use_gated_mlp": false,
+  "value_bias": true
+}

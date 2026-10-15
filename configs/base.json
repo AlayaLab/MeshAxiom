@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "geometry": {
+    "vertex_checkpoint": {
+      "path": "../models/MeshAxiom-Base/weights/vertex-ema.pt",
+      "sha256": "4d60148fdddb65df502becbf9786131836a880fdba226180ce586a8ee10620fb",
+      "step": 180000,
+      "weights": "ema"
+    },
+    "topology_checkpoint": {
+      "path": "../models/MeshAxiom-Base/weights/topology-ema.pt",
+      "sha256": "7fb0c7cc2035616f811326d3e64c1393de39d8f652ab7aa122ab84a987d2a19f",
+      "step": 10000,
+      "weights": "ema"
+    },
+    "vae_checkpoint": {
+      "path": "../models/MeshAxiom-Base/weights/vae-ema.pt",
+      "sha256": "7d6833425af71e923756d2ebdb2863e704857bffb8b365ab0c2f5ec3bfb6f4bd",
+      "step": 30000,
+      "weights": "ema"
+    },
+    "image_model": "../models/MeshAxiom-Base/external/dinov3",
+    "topology_seed": 1574365204,
+    "implementation": "exact"
+  },
+  "material": {
+    "pixal_model_dir": "../external/Pixal3D",
+    "trellis2_model_dir": "../external/TRELLIS.2-4B",
+    "image_encoder_dir": "../external/dinov3",
+    "naf_repo": "../external/NAF",
+    "superresolution_checkpoint": {
+      "path": "../external/RealESRGAN/RealESRGAN_x2plus.pth",
+      "sha256": "49fafd45f8fd7aa8d31ab2a22d14d91b536c34494a5cfe31eb5d89c2fa266abb"
+    },
+    "pixal_repo": "../external/Pixal3D-source",
+    "naf_checkpoint": "../external/naf_release.pth"
+  },
+  "runtime": {
+    "vertex_python": "python",
+    "topology_python": "python",
+    "material_python": "python",
+    "device": "cuda:0",
+    "gpu_lock_pattern": "cuda-{index}.lock",
+    "minimum_free_disk_gib": 0,
+    "minimum_free_workspace_gib": 0,
+    "timeout_seconds": 3600
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "author": "Sho Kuno",
+  "retrieved_utc": "2026-10-15T14:01:20.257643+00:00",
+  "upstream_checksum_manifest_sha256": "0856f0d0ca378ede6a8a23b745ac68a22b844d2a360357c6c2f05dac997e061b",
+  "files": [
+    {
+      "upstream_sha256": "2549eb56cd985849714e267ac5d8321cb7733a087b2fe138c4db5c7cb6d0d691",
+      "vendored_file": "p7_exact_backend.py",
+      "sha256": "1c61ddf6f651f2b27feebcbb7a4f27ee899993ace262d0cf6ab88da5e5ab2aa5",
+      "change": "Module/display names and portable imports; numerical function bodies retained"
+    },
+    {
+      "upstream_sha256": "ad8e7c5e65dfea6895ced8493a796efca90a67119699b2470ade092056ad8c7d",
+      "vendored_file": "p4_vertex_engine.py",
+      "sha256": "1016132a661f931bf5416a4017f7cc696a7cdb86cbd27324f7b4c8588c913f27",
+      "change": "Module/display names and portable imports; numerical function bodies retained"
+    },
+    {
+      "upstream_sha256": "24dbe75cc5f68f95a192600c2cb2faf3917ce82d7583d4109dd472358c65349d",
+      "vendored_file": "topo_fast.py",
+      "sha256": "b5d610b636ac1e0b96f6d9d3384ffaec97d59c8f675da1ab2760e36f918febec",
+      "change": "Module/display names and portable imports; numerical function bodies retained"
+    },
+    {
+      "upstream_sha256": "186d436b28440bef9442947c7656ffee68158382b3b9b67ea8f985dc7557e8e1",
+      "vendored_file": "p5_post_fast.py",
+      "sha256": "92890fabd628ea05e9a4028bcbb5ab53c64b143dc93eacaec3002f789d7f9aca",
+      "change": "Module/display names and portable imports; numerical function bodies retained"
+    },
+    {
+      "upstream_sha256": "93de96f549acbfd6c175bdc3356cc8f277dc0262518b5907b6664bb8ac86b987",
+      "vendored_file": "vertex_engine.py",
+      "sha256": "a0c2fb8adf320248d9d97ab1e09a06764ee8bfab9fed5f6eabbeb806384467de",
+      "change": "Module/display names and portable imports; numerical function bodies retained"
+    }
+  ],
+  "public_api": "Exact only",
+  "license_status": "Upstream package supplies no standalone license; public release license must be finalized with the authors.",
+  "implementation": "Exact CUDA-graph inference, provided by Sho Kuno"
+}

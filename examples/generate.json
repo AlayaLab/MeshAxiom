@@ -1,0 +1,10 @@
+{
+  "name": "generate_mesh",
+  "arguments": {
+    "image": "examples/reference.png",
+    "output_dir": "outputs/example-mesh",
+    "face_budget": 4000,
+    "background": "keep",
+    "seed": 2026082301
+  }
+}

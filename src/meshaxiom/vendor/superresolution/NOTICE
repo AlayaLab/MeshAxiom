@@ -1,0 +1,8 @@
+RRDBNet and the three arch_util functions are derived from BasicSR.
+Copyright 2018-2022 BasicSR Authors; Apache License 2.0.
+The network equations are unchanged. MeshAxiom removes only the architecture
+registry import/decorator and unrelated helper imports/classes.
+
+Real-ESRGAN trained x2plus weights are obtained separately from the publisher.
+Real-ESRGAN: Copyright (c) 2021, Xintao Wang; BSD 3-Clause License.
+No trained weights are included in this source distribution.

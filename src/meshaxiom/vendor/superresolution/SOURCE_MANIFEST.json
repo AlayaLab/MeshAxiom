@@ -1,0 +1,56 @@
+{
+  "component": "RealESRGAN_x2plus inference architecture",
+  "weights_bundled": false,
+  "namespace": "meshaxiom.vendor.superresolution",
+  "functions_extracted": [
+    "default_init_weights",
+    "make_layer",
+    "pixel_unshuffle"
+  ],
+  "licenses": [
+    "Apache-2.0 (BasicSR architecture/helpers)",
+    "BSD-3-Clause (Real-ESRGAN project)"
+  ],
+  "files": [
+    {
+      "file": "rrdbnet_arch.py",
+      "source_repository": "https://github.com/XPixelGroup/BasicSR",
+      "source_commit": "8d56e3a045f9fb3e1d8872f92ee4a4f07f886b0a",
+      "source_path": "basicsr/archs/rrdbnet_arch.py",
+      "source_url": "https://github.com/XPixelGroup/BasicSR/blob/8d56e3a045f9fb3e1d8872f92ee4a4f07f886b0a/basicsr/archs/rrdbnet_arch.py",
+      "source_sha256": "6aa8eb3f77e918b90eeff4ebfaf8745abe0c40eb8fcc03abbc1928693d70ab58",
+      "vendored_sha256": "928d0a8367794ef1ebe32517b511b1ffdc3be366bfcbdece44136b6a3f9a5193",
+      "modifications": "Add source/modification notice; remove BasicSR ARCH_REGISTRY import and decorator. No network equations changed."
+    },
+    {
+      "file": "arch_util.py",
+      "source_repository": "https://github.com/XPixelGroup/BasicSR",
+      "source_commit": "8d56e3a045f9fb3e1d8872f92ee4a4f07f886b0a",
+      "source_path": "basicsr/archs/arch_util.py",
+      "source_url": "https://github.com/XPixelGroup/BasicSR/blob/8d56e3a045f9fb3e1d8872f92ee4a4f07f886b0a/basicsr/archs/arch_util.py",
+      "source_sha256": "be2cec6482fba5455cc1f03ff40da84a89e27feadf886018a4fa7b97b8a1bb55",
+      "vendored_sha256": "7032b86c5ef8f8d5c9b22af89ae8dbe32033500f4d8cc9c2e14e57a46d69fb86",
+      "modifications": "Extract unchanged default_init_weights, make_layer and pixel_unshuffle including decorators; retain only required torch imports and add notice."
+    },
+    {
+      "file": "LICENSE-APACHE-2.0.txt",
+      "source_repository": "https://github.com/XPixelGroup/BasicSR",
+      "source_commit": "8d56e3a045f9fb3e1d8872f92ee4a4f07f886b0a",
+      "source_path": "LICENSE.txt",
+      "source_url": "https://github.com/XPixelGroup/BasicSR/blob/8d56e3a045f9fb3e1d8872f92ee4a4f07f886b0a/LICENSE.txt",
+      "source_sha256": "5447872f21ddc29dc0dc060d5c885513c01c904e9da9931bba69898a6fb4d415",
+      "vendored_sha256": "5447872f21ddc29dc0dc060d5c885513c01c904e9da9931bba69898a6fb4d415",
+      "modifications": "Exact license copy."
+    },
+    {
+      "file": "LICENSE-BSD-3.txt",
+      "source_repository": "https://github.com/xinntao/Real-ESRGAN",
+      "source_commit": "a4abfb2979a7bbff3f69f58f58ae324608821e27",
+      "source_path": "LICENSE",
+      "source_url": "https://github.com/xinntao/Real-ESRGAN/blob/a4abfb2979a7bbff3f69f58f58ae324608821e27/LICENSE",
+      "source_sha256": "4a699ec4863d96a91fc265948a0c90033f7e8735d515524dcf3444736406e0c2",
+      "vendored_sha256": "4a699ec4863d96a91fc265948a0c90033f7e8735d515524dcf3444736406e0c2",
+      "modifications": "Exact license copy."
+    }
+  ]
+}

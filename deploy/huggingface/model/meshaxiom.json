@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "geometry": {
+    "vertex_checkpoint": {
+      "path": "weights/vertex-ema.pt",
+      "sha256": "4d60148fdddb65df502becbf9786131836a880fdba226180ce586a8ee10620fb",
+      "step": 180000,
+      "weights": "ema"
+    },
+    "topology_checkpoint": {
+      "path": "weights/topology-ema.pt",
+      "sha256": "7fb0c7cc2035616f811326d3e64c1393de39d8f652ab7aa122ab84a987d2a19f",
+      "step": 10000,
+      "weights": "ema"
+    },
+    "vae_checkpoint": {
+      "path": "weights/vae-ema.pt",
+      "sha256": "7d6833425af71e923756d2ebdb2863e704857bffb8b365ab0c2f5ec3bfb6f4bd",
+      "step": 30000,
+      "weights": "ema"
+    },
+    "image_model": "external/dinov3",
+    "topology_seed": 1574365204,
+    "implementation": "exact"
+  },
+  "runtime": {
+    "vertex_python": "python",
+    "topology_python": "python",
+    "device": "cuda:0",
+    "gpu_lock_pattern": "cuda-{index}.lock",
+    "minimum_free_disk_gib": 0,
+    "minimum_free_workspace_gib": 0,
+    "timeout_seconds": 3600
+  }
+}

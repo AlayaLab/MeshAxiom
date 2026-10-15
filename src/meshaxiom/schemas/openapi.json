@@ -1,0 +1,243 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MeshAxiom local inference API",
+    "version": "0.1.0.dev0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:7860"
+    }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "Interface is running; weights load only in jobs."
+          }
+        }
+      }
+    },
+    "/v1/doctor": {
+      "get": {
+        "operationId": "doctor",
+        "responses": {
+          "200": {
+            "description": "Checkpoint and environment setup checks, without loading model weights."
+          }
+        }
+      }
+    },
+    "/v1/uploads": {
+      "post": {
+        "operationId": "upload_input",
+        "parameters": [
+          {
+            "name": "X-Filename",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/octet-stream": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Upload identifier"
+          },
+          "400": {
+            "description": "Invalid file or size"
+          }
+        }
+      }
+    },
+    "/v1/jobs": {
+      "post": {
+        "operationId": "submit_job",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "operation": {
+                    "type": "string",
+                    "enum": [
+                      "geometry",
+                      "material",
+                      "superresolution"
+                    ]
+                  },
+                  "image_path": {
+                    "type": "string"
+                  },
+                  "image_upload": {
+                    "type": "string"
+                  },
+                  "mesh_path": {
+                    "type": "string"
+                  },
+                  "mesh_upload": {
+                    "type": "string"
+                  },
+                  "seed": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 9223372036854775807
+                  },
+                  "face_budget": {
+                    "type": "integer",
+                    "minimum": 100,
+                    "maximum": 30000,
+                    "default": 8000
+                  },
+                  "background": {
+                    "type": "string",
+                    "enum": [
+                      "auto",
+                      "alpha",
+                      "keep",
+                      "remove"
+                    ]
+                  },
+                  "texture_size": {
+                    "type": "integer",
+                    "enum": [
+                      256,
+                      512,
+                      1024,
+                      2048,
+                      4096
+                    ]
+                  },
+                  "camera": {
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "operation"
+                ],
+                "if": {
+                  "properties": {
+                    "operation": {
+                      "const": "superresolution"
+                    }
+                  },
+                  "required": [
+                    "operation"
+                  ]
+                },
+                "then": {
+                  "description": "Independent atlas enhancement accepts exactly one nonempty local image path or uploaded image ID and no geometry/material options.",
+                  "properties": {
+                    "operation": {
+                      "const": "superresolution"
+                    },
+                    "image_path": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "image_upload": {
+                      "type": "string",
+                      "pattern": "^[a-f0-9]{32}\\.(png|jpg|jpeg|webp)$"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "oneOf": [
+                    {
+                      "required": [
+                        "image_path"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "image_upload"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Queued job and status URL"
+          },
+          "400": {
+            "description": "Invalid request"
+          }
+        }
+      }
+    },
+    "/v1/jobs/{job_id}": {
+      "get": {
+        "operationId": "get_job",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "queued, running, complete or failed job with artifact bindings"
+          },
+          "404": {
+            "description": "Unknown job"
+          }
+        }
+      }
+    },
+    "/v1/jobs/{job_id}/artifacts/{artifact}": {
+      "get": {
+        "operationId": "download_artifact",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "artifact",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verified generated artifact"
+          },
+          "404": {
+            "description": "Unknown artifact or incomplete job"
+          }
+        }
+      }
+    }
+  }
+}

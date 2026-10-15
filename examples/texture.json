@@ -1,0 +1,10 @@
+{
+  "name": "texture_mesh",
+  "arguments": {
+    "mesh": "outputs/example-mesh/mesh.glb",
+    "image": "examples/reference.png",
+    "output_dir": "outputs/example-material",
+    "texture_size": 1024,
+    "seed": 42
+  }
+}

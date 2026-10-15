@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "model": "MeshAxiom-Base",
+  "implementation": "exact",
+  "files": [
+    {
+      "kind": "vertex",
+      "file": "weights/vertex-ema.pt",
+      "step": 180000,
+      "weights": "ema",
+      "tensor_count": 955,
+      "all_tensor_values_and_dtypes_equal": true,
+      "only_metadata_changes": [],
+      "source_sha256": "4d60148fdddb65df502becbf9786131836a880fdba226180ce586a8ee10620fb",
+      "sha256": "4d60148fdddb65df502becbf9786131836a880fdba226180ce586a8ee10620fb",
+      "size": 11235479045
+    },
+    {
+      "kind": "topology",
+      "file": "weights/topology-ema.pt",
+      "step": 10000,
+      "weights": "ema",
+      "tensor_count": 830,
+      "all_tensor_values_and_dtypes_equal": true,
+      "only_metadata_changes": [
+        "v113.version"
+      ],
+      "source_sha256": "3818846563217c1d6819c8c9dbf7d8b8cc43b7a6cd2e96d6b37b576fe147ef45",
+      "sha256": "7fb0c7cc2035616f811326d3e64c1393de39d8f652ab7aa122ab84a987d2a19f",
+      "size": 9423507316
+    },
+    {
+      "kind": "vae",
+      "file": "weights/vae-ema.pt",
+      "step": 30000,
+      "weights": "ema",
+      "tensor_count": 343,
+      "all_tensor_values_and_dtypes_equal": true,
+      "only_metadata_changes": [],
+      "source_sha256": "7d6833425af71e923756d2ebdb2863e704857bffb8b365ab0c2f5ec3bfb6f4bd",
+      "sha256": "7d6833425af71e923756d2ebdb2863e704857bffb8b365ab0c2f5ec3bfb6f4bd",
+      "size": 446157647
+    }
+  ],
+  "scope": "Metadata branding and complete tensor equality; no new GPU identity claim"
+}

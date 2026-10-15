@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "models": [
+    {
+      "kind": "vertex",
+      "status": "PASS",
+      "strict_state_keys": 955,
+      "every_loaded_tensor_equal": true,
+      "device": "cpu",
+      "forward_calls": 0,
+      "gpu_calls": 0,
+      "seconds": 37.0949134468101
+    },
+    {
+      "kind": "topology",
+      "status": "PASS",
+      "strict_state_keys": 830,
+      "every_loaded_tensor_equal": true,
+      "device": "cpu",
+      "forward_calls": 0,
+      "gpu_calls": 0,
+      "seconds": 33.01140995277092
+    },
+    {
+      "kind": "vae",
+      "status": "PASS",
+      "strict_state_keys": 343,
+      "every_loaded_tensor_equal": true,
+      "device": "cpu",
+      "forward_calls": 0,
+      "gpu_calls": 0,
+      "seconds": 11.152696118690073
+    }
+  ],
+  "cuda_inference_executed": false,
+  "network_model_downloads": false
+}

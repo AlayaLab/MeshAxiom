@@ -1,0 +1,7 @@
+{
+  "name": "enhance_texture",
+  "arguments": {
+    "image": "outputs/example-material/base_color.png",
+    "output_dir": "outputs/example-enhanced"
+  }
+}

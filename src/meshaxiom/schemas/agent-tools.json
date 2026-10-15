@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "tools": [
+    {
+      "type": "function",
+      "name": "generate_mesh",
+      "description": "Generate a native triangle mesh from an image using the 180K geometry recipe.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "image": {
+            "type": "string",
+            "description": "Local image path"
+          },
+          "output_dir": {
+            "type": "string",
+            "description": "New empty output directory"
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9223372036854775807
+          },
+          "face_budget": {
+            "type": "integer",
+            "minimum": 100,
+            "maximum": 30000,
+            "default": 8000
+          },
+          "background": {
+            "type": "string",
+            "enum": [
+              "auto",
+              "alpha",
+              "keep",
+              "remove"
+            ],
+            "default": "auto"
+          }
+        },
+        "required": [
+          "image",
+          "output_dir"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "type": "function",
+      "name": "texture_mesh",
+      "description": "Generate material textures for an existing static mesh while preserving welded oriented triangle geometry.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "image": {
+            "type": "string",
+            "description": "Local image path"
+          },
+          "output_dir": {
+            "type": "string",
+            "description": "New empty output directory"
+          },
+          "seed": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9223372036854775807
+          },
+          "mesh": {
+            "type": "string",
+            "description": "Existing OBJ, GLB or mesh JSON"
+          },
+          "texture_size": {
+            "type": "integer",
+            "enum": [
+              256,
+              512,
+              1024,
+              2048,
+              4096
+            ],
+            "default": 2048
+          },
+          "camera": {
+            "type": "object",
+            "description": "Optional reference camera; see material documentation"
+          }
+        },
+        "required": [
+          "mesh",
+          "image",
+          "output_dir"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "type": "function",
+      "name": "enhance_texture",
+      "description": "Apply independently configured Real-ESRGAN x2 enhancement to a texture atlas; outputs a PNG and does not modify UVs or mesh geometry.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "image": {
+            "type": "string"
+          },
+          "output_dir": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "image",
+          "output_dir"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

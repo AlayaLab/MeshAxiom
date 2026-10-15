@@ -6,3 +6,24 @@ Thumbs.db
 .env
 .env.*
 !.env.example
+
+# MeshAxiom inference artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+.venv*/
+.locks/
+/weights/
+/external/
+/outputs/
+*.local.json
+local-config.json
+*.pt
+*.pth
+*.safetensors
+
+/models/
+.meshaxiom-gpu-locks/

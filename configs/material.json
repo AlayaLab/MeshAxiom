@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "material": {
+    "pixal_model_dir": "../external/Pixal3D",
+    "trellis2_model_dir": "../external/TRELLIS.2-4B",
+    "image_encoder_dir": "../external/dinov3",
+    "naf_repo": "../external/NAF",
+    "superresolution_checkpoint": {
+      "path": "../external/RealESRGAN/RealESRGAN_x2plus.pth",
+      "sha256": "49fafd45f8fd7aa8d31ab2a22d14d91b536c34494a5cfe31eb5d89c2fa266abb"
+    },
+    "pixal_repo": "../external/Pixal3D-source",
+    "naf_checkpoint": "../external/naf_release.pth"
+  },
+  "runtime": {
+    "material_python": "python",
+    "superresolution_python": "python",
+    "device": "cuda:0",
+    "gpu_lock_directory": "../.locks",
+    "gpu_lock_pattern": "cuda-{index}.lock",
+    "timeout_seconds": 3600
+  }
+}

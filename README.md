@@ -9,6 +9,7 @@
 
 **[AlayaLab](https://github.com/AlayaLab)**
 
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-Hugging%20Face-FFD21E)](https://huggingface.co/AlayaLab)
 [![Code](https://img.shields.io/badge/Code-GitHub-24292F)](https://github.com/AlayaLab/MeshAxiom)
 [![Project Page](https://img.shields.io/badge/Project-Page-1683D8)](https://alaya-lab.github.io/MeshAxiom/)
 [![3D Asset Library](https://img.shields.io/badge/3D-Asset%20Library-5B6EE1)](https://alaya-lab.github.io/MeshAxiom/space-kit.html)
@@ -21,7 +22,7 @@
 
 MeshAxiom connects compact, explicit 3D meshes to persistent asset records and programmable scene state. **MeshAxiom-Base** turns a single image and a requested face budget into a native triangle mesh. File-based tools let programs and agents inspect and revise these assets, reuse them as modules, and control scene transforms, motion and cameras.
 
-This is the official repository for the MeshAxiom model and workflow. The project website and interactive asset library are available now; code, model weights and the paper are planned for release here.
+This is the official repository for the MeshAxiom model and workflow. The project website and interactive asset library are available now; Exact inference code is included below as a release candidate. Model weights are being prepared on [Hugging Face](https://huggingface.co/AlayaLab); the paper and remaining workflow tools will follow.
 
 ## Agent-Native 3D Authoring
 
@@ -52,9 +53,103 @@ The **[3D asset library](https://alaya-lab.github.io/MeshAxiom/space-kit.html)**
 
 - [x] Project website and Space Saga showcase
 - [x] Interactive 3D asset library and asset downloads
-- [ ] MeshAxiom-Base code
+- [x] MeshAxiom-Base Exact inference code (release candidate)
 - [ ] Model weights
 - [ ] MeshAxiom workflow and tools
 - [ ] Paper and workflow documentation
 
-Installation instructions, model download links and paper details will be added here as each release becomes available.
+The code includes CLI, Python, agent and local upload interfaces, with separate material tools. Model weights are not available yet. The current validation covers CPU tests and tensor preservation; target GPU identity and the public release license remain pending.
+
+
+## Install
+
+Use Linux with CUDA. The author-tested acceleration stack is NVIDIA PyTorch
+25.03, CUDA 12.8, Python 3.12 and H200. Other environments require verification
+with `verify-exact`. Install into an isolated environment:
+
+```bash
+python -m pip install -e '.[geometry,hub,background,postprocess]'
+```
+
+The NGC container already supplies PyTorch. `deploy/huggingface/space/Dockerfile`
+records the deployment stack; its cold build and target hardware must be tested.
+
+## Load the model
+
+The Hugging Face model payload is prepared separately from this code repository.
+It contains `meshaxiom.json`, three EMA files under `weights/`, and the local
+DINOv3 architecture/processor configuration. No extra DINOv3 model download is
+needed: the released EMA files already contain those backbone tensors.
+
+For a local model directory:
+
+```python
+from meshaxiom import MeshAxiomPipeline
+
+with MeshAxiomPipeline.from_pretrained("models/MeshAxiom-Base") as pipeline:
+    result = pipeline.generate("image.png", "outputs/object", face_budget=4000)
+    print(result["artifacts"]["obj"]["path"])
+```
+
+Once the model is published, use its real Hub repository ID and full commit SHA:
+
+```python
+with MeshAxiomPipeline.from_pretrained(model_id, revision=model_commit_sha) as pipeline:
+    first = pipeline.generate("first.png", "outputs/first", face_budget=4000)
+    second = pipeline.generate("second.png", "outputs/second", face_budget=8000)
+```
+
+The two model workers remain resident between calls. `close()` or the `with`
+statement releases them and their cooperative GPU lease. Face requests guide
+native generation; actual face counts can differ. Requests of 2K, 4K, 8K and 16K
+are useful examples, rather than enforced triangle counts.
+
+## CLI and upload UI
+
+```bash
+meshaxiom doctor --config models/MeshAxiom-Base/meshaxiom.json --operation geometry --verify-hashes --runtime-check
+meshaxiom generate --config models/MeshAxiom-Base/meshaxiom.json --image image.png --face-budget 4000 --output outputs/object
+meshaxiom serve --config models/MeshAxiom-Base/meshaxiom.json --workspace outputs/server
+```
+
+Open `http://127.0.0.1:7860` for the local upload page. The first generation loads
+the models; later generations reuse them. For an already prepared 512×512
+RGB-on-black input, use `--background keep`. Transparent PNGs can use
+`--background alpha`; ordinary photographs use `auto` or `remove` with the
+background extra. Both stages receive the same prepared image and processor tensor.
+
+Geometry outputs are `mesh.obj`, `mesh.json`, `mesh.glb`, `vertices.npz` and
+`topology.npz`, accompanied by input, checkpoint and geometry reports. OBJ/JSON
+use Z-up coordinates; the GLB has an explicit transform into glTF's Y-up frame.
+
+## Verify Exact on the target machine
+
+```bash
+meshaxiom verify-exact --config models/MeshAxiom-Base/meshaxiom.json \
+  --image examples/reference.png --background keep --face-budget 4000 \
+  --output outputs/identity-4k
+```
+
+This diagnostic runs the packaged reference and Exact implementations separately
+and requires equal SHA256 for `vertices.npz`, `topology.npz`, `mesh.obj` and
+`mesh.json`. A mismatch returns a failure and retains both outputs. The reference
+is used only for verification. Identity is specific to the tested inputs, weights,
+GPU and software stack. See [Exact implementation](docs/EXACT.md).
+
+## Agents and material tools
+
+[Agent usage](docs/AGENT_USAGE.md) describes JSON calls and the local HTTP API.
+[Materials](docs/MATERIALS.md) covers `texture_mesh` for an existing mesh and
+`enhance_texture` for independent texture enhancement. These do not require
+loading the Base geometry model.
+
+## Release preparation
+
+[Hugging Face deployment](docs/HUGGINGFACE.md) describes the model payload and
+Docker Space. [Release status](docs/RELEASE_PREPARATION.md) records what must be
+finalized before publication. This is a local release candidate, not a claim
+that model weights or a hosted Space are already available. Model uploads are
+planned under [AlayaLab on Hugging Face](https://huggingface.co/AlayaLab).
+
+Sho Kuno provided the Exact inference acceleration. Third-party notices and
+DINOv3 terms are retained; see [licenses and dependencies](docs/THIRD_PARTY.md).

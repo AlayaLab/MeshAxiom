@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "status": "INFERENCE_SOURCE_SNAPSHOT",
+  "sources": {
+    "vertex": "V197 source_a6, frozen 4709ffb7c0b455e264e2526d0453256b5fc582230fbfb52bbfc391664cb0bd4e",
+    "topology": "V50 source, frozen 44b4c5612eb8a5c151028abe9a305289cc1fcd86ece78b200421d3a34d60dfac",
+    "recipe": "a12_codex_release_20261004_r1/selfdist_vendor197 and export orientation v1"
+  },
+  "license_status": "Internal source license not present in snapshots; release decision required before public distribution.",
+  "files": [
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_file": "vertex/meshaxiom_core/__init__.py",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "1381bda8e7594e0b54840be343864beea0077f166edaee2e190757a03ccc52e4",
+      "packaged_file": "vertex/meshaxiom_core/config.py",
+      "packaged_sha256": "1381bda8e7594e0b54840be343864beea0077f166edaee2e190757a03ccc52e4",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_file": "vertex/meshaxiom_core/data/__init__.py",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "7eeefbffb25b14d8dbb853c29fb4aece252a03c3da04d0fef6b1222e10b5da1e",
+      "packaged_file": "vertex/meshaxiom_core/data/mesh_ops.py",
+      "packaged_sha256": "c5c66bed4d539b81464ec46f6bc4779a9d4b2ee56665389728c9aeb598b9d545",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_file": "vertex/meshaxiom_core/models/__init__.py",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "699f7d1e4d920187aab043ab96c950ffac2227abeea86def84273c16db8bd234",
+      "packaged_file": "vertex/meshaxiom_core/models/layers.py",
+      "packaged_sha256": "cedc1ea3e048394c5568ee06d991ea8066f4687790f18aff6da3681771123680",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "4200edad868f019c046ae5cd60fa4e3d2e745b7ca3fb3db0b3e89fa24ebed8a3",
+      "packaged_file": "vertex/meshaxiom_core/models/octree_dit.py",
+      "packaged_sha256": "b8397cd291a9f323542b5fa52646365a447139491b98391879c8da8811bd27d9",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "9b69f69c5fea26ff8f51d20e6434024202f54a9459f409b83e94263380cc70f3",
+      "packaged_file": "vertex/meshaxiom_core/models/condition.py",
+      "packaged_sha256": "ab95c04d13a82de6a7334ae8bf5e42bbc58d1afb1c8c94f94e8864b2e40574be",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "21dc61498d423f9aaf747741d38b4d6bc2f43a806eaaf9d3c14c3c800c6ef697",
+      "packaged_file": "vertex/meshaxiom_core/models/fps.py",
+      "packaged_sha256": "70a0005a1b3ca0f8e1f768eeffabcefcab1f8cd05bf888c515709167b3485b21",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_file": "vertex/meshaxiom_core/diffusion/__init__.py",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "d833a8b34cf721a84fc4e7808d706699175c4a6cb02164a3d9921aa2406a22b6",
+      "packaged_file": "vertex/meshaxiom_core/diffusion/flow.py",
+      "packaged_sha256": "d833a8b34cf721a84fc4e7808d706699175c4a6cb02164a3d9921aa2406a22b6",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "25afc5e60ce87ad0f31c164ca092fbcb3e8034ea0f6c596077cc232f19172f0f",
+      "packaged_file": "vertex/meshaxiom_core/models/posenc182.py",
+      "packaged_sha256": "28f7b375bcc2c9f855476f6d44298504d5fc5e8b3b28239dc2a739f9a7be9638",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "3c4c430e5e52b0b8cebfd2c20a5ad66f5fe05a8e2de586da8cbef1f8370ec794",
+      "packaged_file": "vertex/meshaxiom_core/models/fps_fast153.py",
+      "packaged_sha256": "002154485f0442311db110a2eadf6a2328d6bdf11be7e2e68f78b95084f309b6",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "vertex-v197",
+      "source_sha256": "4cdab3296d910fe292f6e717eeb786f68e8946eb62f6dd506fd64e1ac1e49ba9",
+      "packaged_file": "vertex/meshaxiom_core/sample.py",
+      "packaged_sha256": "315f6881b51cafb32e0c851fb837627ce7661692169722d3426c2cefc68c4e84",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_file": "topology/meshaxiom_core/__init__.py",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "1381bda8e7594e0b54840be343864beea0077f166edaee2e190757a03ccc52e4",
+      "packaged_file": "topology/meshaxiom_core/config.py",
+      "packaged_sha256": "1381bda8e7594e0b54840be343864beea0077f166edaee2e190757a03ccc52e4",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_file": "topology/meshaxiom_core/data/__init__.py",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "7eeefbffb25b14d8dbb853c29fb4aece252a03c3da04d0fef6b1222e10b5da1e",
+      "packaged_file": "topology/meshaxiom_core/data/mesh_ops.py",
+      "packaged_sha256": "c5c66bed4d539b81464ec46f6bc4779a9d4b2ee56665389728c9aeb598b9d545",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_file": "topology/meshaxiom_core/models/__init__.py",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "fdff283027bc9e9b5dbf35e5fd19cdcb83f8a10c79d771edef9fb3eb5564e69b",
+      "packaged_file": "topology/meshaxiom_core/models/layers.py",
+      "packaged_sha256": "be13fba0516a58858b82b233a9f28b0aae4f05b1caceef403d4ad57e20dabb41",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "a6ff8b40502cbbbae0bbbc4147f37a32aff19aaa70038db1765f7d0df5640cdb",
+      "packaged_file": "topology/meshaxiom_core/models/octree_dit.py",
+      "packaged_sha256": "62ed57f74ccf504a5878deb60d26fd56740970230d817dd0f4bd52d8d2084941",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "4907e76176f672f02e8100b9dc247780fe8ad4ceecec4ed121da80fbc831efaa",
+      "packaged_file": "topology/meshaxiom_core/models/condition.py",
+      "packaged_sha256": "d54f95d2ddc559e24820391514c3496c5dd848d2cd9d2c2f49798acec35b05b3",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "8eefa997216503b9f0c86a596eb5f21d1d0298cbc13c132f46ecc0b13f7ee707",
+      "packaged_file": "topology/meshaxiom_core/models/fps.py",
+      "packaged_sha256": "8eefa997216503b9f0c86a596eb5f21d1d0298cbc13c132f46ecc0b13f7ee707",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_file": "topology/meshaxiom_core/diffusion/__init__.py",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "d833a8b34cf721a84fc4e7808d706699175c4a6cb02164a3d9921aa2406a22b6",
+      "packaged_file": "topology/meshaxiom_core/diffusion/flow.py",
+      "packaged_sha256": "d833a8b34cf721a84fc4e7808d706699175c4a6cb02164a3d9921aa2406a22b6",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "39610d31ebb741970f1e0782478c2396a5431757ab68405cdbff9a01c496520f",
+      "packaged_file": "topology/meshaxiom_core/models/topo_dit.py",
+      "packaged_sha256": "de5dba6ac0ec8e799c32053364ff31049d809e0fee844b2db58e647680edf2f3",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "3e2594c7b1aee127d461171c9d54d2ee7d3ab649890940e93e573cca072677dd",
+      "packaged_file": "topology/meshaxiom_core/models/topo_vae.py",
+      "packaged_sha256": "3dfc795bc1cf9c1387291fdb4035cf8c319f85ae1b64279bafa91855bfb53633",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_file": "topology/meshaxiom_core/topology/__init__.py",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "6df6e3669f855fca13352728bc9778915a18e91135823ff3de702b738085043a",
+      "packaged_file": "topology/meshaxiom_core/topology/spacetime.py",
+      "packaged_sha256": "441ec2b60f190057c4c0c1ad517a049eff1a1b91680b04b7f552146b5481df26",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "313eed389c488bf4845f06c07ad0f04e21183c47547f0becf57ab8d4f106fe68",
+      "packaged_file": "topology/meshaxiom_core/topology/streamed_edges.py",
+      "packaged_sha256": "313eed389c488bf4845f06c07ad0f04e21183c47547f0becf57ab8d4f106fe68",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "topology-v50",
+      "source_sha256": "a4b3ab47d39c0507d960662751814cde0024ab8f72a694a214eceac57023e91d",
+      "packaged_file": "topology/meshaxiom_core/sample.py",
+      "packaged_sha256": "c50833dafbc93e37931427eae376b25da65b1b59093f8a46c38cafdd873909ca",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "production-recipe",
+      "source_sha256": "49c2a9dabd0a95042f86f06db98d59da5e99262fd4f4c2e25ed5fd02bd0d1f0e",
+      "packaged_file": "recipe/gen_mbr128.py",
+      "packaged_sha256": "188ad31d9462345e71f3ff39229963fba8eddcc6ed485d7b135dae7a223a92e0",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "production-recipe",
+      "source_sha256": "99c9af85ae8ae9c4f1c8db32c7d3f56e9de3cb3d5dacb26678f175433c06f022",
+      "packaged_file": "recipe/model118rich.py",
+      "packaged_sha256": "313d35a90f32f669b63f43530df30cf4fdf94a97551b45cb6b4875d0f1e87cc1",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "production-recipe",
+      "source_sha256": "ccc701bc873b864e6a54e337b9dc29d071541852559842f1e846f1c5b82bb9bf",
+      "packaged_file": "recipe/decode_policy90.py",
+      "packaged_sha256": "3a0da4b826f3a359187d91af6d69e0cf202b5efbeb233ecbc855201d2b3c1937",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "production-recipe",
+      "source_sha256": "7bab3dfc38401027f8b2f1c408596fb5cf3ced4f7f0947ff818efe2a925e2b53",
+      "packaged_file": "recipe/DECODE_POLICY.json",
+      "packaged_sha256": "f7a136f98ed33653711a69368ca6b51f4df93962f9144bdfcb5dbb78b04528f5",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "production-recipe",
+      "source_sha256": "20077668eb9d92765a9c61cbc83df918b009c4e41db84ddd2c986968ce3bdfc6",
+      "packaged_file": "recipe/mesh_utils90.py",
+      "packaged_sha256": "e55d1fb6f9e8421d538e578348c6b8a13823b5993956dc73cdc104715d278aee",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    },
+    {
+      "source_group": "production-recipe",
+      "source_sha256": "90458f3c690429d378a7a35e9e6d87944f1be2011f14ef2c85462bfcdfc325de",
+      "packaged_file": "recipe/orient_faces.py",
+      "packaged_sha256": "90458f3c690429d378a7a35e9e6d87944f1be2011f14ef2c85462bfcdfc325de",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+    }
+  ]
+}

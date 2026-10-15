@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "status": "CPU_AND_TENSOR_VALIDATED_GPU_IDENTITY_PENDING",
+  "prepared_utc": "2026-10-15T14:38:15.010217+00:00",
+  "model": "MeshAxiom-Base",
+  "implementation": "exact",
+  "cpu_tests": {
+    "passed": 76,
+    "failed": 0,
+    "scope": "API, preprocessing, geometry exports, independent materials, real sampler control-flow/static-buffer/KV CPU controls, worker failure cleanup"
+  },
+  "ema_tensors": {
+    "vertex": 955,
+    "topology": 830,
+    "vae": 343,
+    "total": 2128,
+    "all_keys_shapes_dtypes_values_preserved": true,
+    "actual_models_cpu_strict_loaded": true,
+    "all_loaded_state_tensors_equal": true
+  },
+  "kernel_source_review": {
+    "files": 5,
+    "function_or_class_definitions": 77,
+    "AST_matches_delivered_math_and_control_flow_after_name_import_adaptation": true
+  },
+  "accelerated_gpu_inference_executed": false,
+  "integrated_four_file_gpu_identity_verified": false,
+  "new_latency_measurements": false,
+  "cold_docker_build_verified": false,
+  "reason_gpu_pending": "Existing local and DLC evaluation jobs occupy the GPUs; no workload was interrupted.",
+  "runtime_checked": {
+    "python": "3.12",
+    "torch": "2.7.0a0+7c8ec84dab.nv25.3",
+    "transformers": "4.57.3",
+    "numpy": "1.26.4",
+    "Pillow": "12.0.0"
+  },
+  "author_upstream_evidence": {
+    "exact_four_input_identity_reported": true,
+    "scope": "Author-delivered implementation; not a new acceptance of the renamed integration"
+  },
+  "public_license": "Pending authors release decision; third-party terms retained"
+}

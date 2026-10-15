@@ -1,0 +1,13 @@
+{
+  "_class_name": "MeshAxiomPipeline",
+  "_library_name": "meshaxiom",
+  "schema_version": 1,
+  "model": "MeshAxiom-Base",
+  "implementation": "exact",
+  "configuration": "meshaxiom.json",
+  "vertex_step": 180000,
+  "topology_step": 10000,
+  "vae_step": 30000,
+  "ema_only": true,
+  "optimizer_included": false
+}

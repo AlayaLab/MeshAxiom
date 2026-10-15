@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "files": [
+    {
+      "file": "p7_exact_backend.py",
+      "function_or_class_definitions": 2,
+      "math_and_control_flow_AST_equal_after_import_and_name_adaptation": true
+    },
+    {
+      "file": "p4_vertex_engine.py",
+      "function_or_class_definitions": 7,
+      "math_and_control_flow_AST_equal_after_import_and_name_adaptation": true
+    },
+    {
+      "file": "topo_fast.py",
+      "function_or_class_definitions": 23,
+      "math_and_control_flow_AST_equal_after_import_and_name_adaptation": true
+    },
+    {
+      "file": "p5_post_fast.py",
+      "function_or_class_definitions": 28,
+      "math_and_control_flow_AST_equal_after_import_and_name_adaptation": true
+    },
+    {
+      "file": "vertex_engine.py",
+      "function_or_class_definitions": 17,
+      "math_and_control_flow_AST_equal_after_import_and_name_adaptation": true
+    }
+  ],
+  "definition_count": 77,
+  "notes": "Imports, module documentation and public module/display names are adapted. Compared function/class bodies and expressions otherwise match the delivered source AST. GPU identity is a separate check."
+}
