@@ -14,41 +14,54 @@ language:
 
 # MeshAxiom-Base
 
-MeshAxiom: An Agent-Native 3D Foundation Stack for Programmable Worlds.
+**MeshAxiom: An Agent-Native 3D Foundation Stack for Programmable Worlds**
 
-[Project](https://alaya-lab.github.io/MeshAxiom/) · [Source](https://github.com/AlayaLab/MeshAxiom)
+[Project](https://alaya-lab.github.io/MeshAxiom/) · [Code](https://github.com/AlayaLab/MeshAxiom)
 
-This local model payload contains vertex EMA 180K, topology EMA 10K and topology
-VAE EMA 30K for image-to-native-mesh inference. Use the MeshAxiom source package's
-Exact implementation. No optimizer, training data or distilled model is included.
+Public Base weights for **Exact** image-to-native-mesh inference. This repository
+contains vertex EMA 180K, topology EMA 10K and topology VAE EMA 30K. Install the
+MeshAxiom source package for the Python API, CLI and agent tools. No optimizer,
+training data or alternative inference preset is included.
 
 ```python
 from meshaxiom import MeshAxiomPipeline
-with MeshAxiomPipeline.from_pretrained("/path/to/this-model-directory") as model:
+
+with MeshAxiomPipeline.from_pretrained(
+    "AlayaLab/MeshAxiom-Base",
+    revision="859a522c77e25770619f16e89a57447a0bb9bc16",
+) as model:
     result = model.generate("image.png", "outputs/object", face_budget=4000)
 ```
 
-After publication, a Hub ID and full commit SHA can replace the local directory.
-The source package supplies the inference implementation; this payload supplies
-data only. `model_index.json` is descriptive metadata, not a Diffusers pipeline.
+The pinned revision contains the verified Base weights. A local model directory
+can also be used. This repository supplies model data; the source package supplies
+the inference implementation. `model_index.json` is descriptive metadata, not a
+Diffusers pipeline.
 
-The face request conditions generation and does not guarantee an exact count.
-The model uses 512×512 RGB-on-black input, MBR8, 20 DPM++2M steps and topology CFG 3.
-Output coordinates are Z-up; the generated GLB explicitly transforms them to Y-up.
+Input is a 512×512 RGB image on a black background. The recipe uses MBR8, 20
+DPM++2M steps and topology CFG 3. The requested face budget guides generation;
+actual face counts can differ. OBJ/JSON coordinates are Z-up, and exported GLB
+files include a transform into glTF's Y-up frame.
 
-Sho Kuno contributed the Exact inference implementation. Existing author timing
-and identity evidence is described in the source documentation; this payload's
-tensor-roundtrip receipt is `WEIGHTS.json`. It does not by itself prove new GPU
-identity, speed, semantic quality or out-of-distribution performance.
+## Verification and limitations
 
-## License and limitations
+All 2,128 EMA tensors were preserved and the three models loaded strictly on CPU.
+76 CPU tests passed. Uploaded weight hashes and authenticated sample byte ranges
+match the verified local files. See `WEIGHTS.json`, `VALIDATION.json` and
+`SHA256SUMS` for the recorded model identities and validation scope.
 
-The authors' public release license is pending; see `LICENSE.md`. The checkpoints
-include frozen DINOv3 tensors subject to `external/dinov3/LICENSE.md`. Only the
-architecture and processor configurations are additionally included.
+Sho Kuno contributed the Exact acceleration. His tested platform is H200 with
+NVIDIA PyTorch 25.03. Target GPU identity and a cold Docker build of this integrated
+release remain to be verified; run `meshaxiom verify-exact` on your target setup.
+Geometry can have open boundaries or degenerate faces.
 
-The acceleration author's tested platform is H200 with NVIDIA PyTorch 25.03.
-Verify the target environment with `meshaxiom verify-exact`. Geometry can have
-open boundaries or degenerate faces.
+## License
 
-This is release preparation, with no public repository revision assigned yet.
+The authors' standalone release license is pending; see `LICENSE.md`. These
+checkpoints contain frozen DINOv3 tensors subject to `external/dinov3/LICENSE.md`.
+The included architecture and processor configurations avoid a separate backbone
+weight download. Third-party terms and notices are retained.
+
+## Paper
+
+The arXiv link and citation will be added when the preprint is available.

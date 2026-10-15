@@ -1,4 +1,4 @@
-# Hugging Face preparation
+# Hugging Face deployment
 
 GitHub contains the installable source package. A separate Hub model repository
 contains the three Base EMA files, a model card, checksums, `model_index.json`,
@@ -18,12 +18,15 @@ dtype, key, configuration and non-brand metadata value is checked on readback.
 The staging receipt and `SHA256SUMS` belong with the model payload. SHA256 binds
 file content, so the renamed topology archive has its own checksum.
 
-Once model publication is approved and complete, record the actual repository ID
-and full commit SHA. Consumers can use:
+The public model repository is `AlayaLab/MeshAxiom-Base`. Its verified model
+revision is `859a522c77e25770619f16e89a57447a0bb9bc16`. Consumers can use:
 
 ```python
 from meshaxiom import MeshAxiomPipeline
-pipeline = MeshAxiomPipeline.from_pretrained(model_id, revision=model_commit_sha)
+pipeline = MeshAxiomPipeline.from_pretrained(
+    "AlayaLab/MeshAxiom-Base",
+    revision="859a522c77e25770619f16e89a57447a0bb9bc16",
+)
 ```
 
 The implementation uses `huggingface_hub.snapshot_download` with a fixed data
@@ -45,6 +48,7 @@ small GPU is not assumed sufficient. Run `doctor` and `verify-exact` before serv
 See [Docker Spaces](https://huggingface.co/docs/hub/spaces-sdks-docker) for the
 container port and runtime hardware requirements.
 
-This preparation step performs no Hub upload, account modification or Space
-creation. Public licensing and target GPU verification are tracked in
+The code and model weights are public; the Docker Space remains a deployment
+template. The staging scripts do not upload or create a Space. The authors'
+license assignment and target GPU verification are tracked in
 `docs/RELEASE_PREPARATION.md`.

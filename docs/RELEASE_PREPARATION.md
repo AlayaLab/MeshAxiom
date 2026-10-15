@@ -1,7 +1,8 @@
-# Release preparation status
+# Release status
 
-This tree prepares MeshAxiom Exact inference for GitHub, a separate Hugging Face
-Base model payload and an optional Docker Space. All public generation interfaces
+MeshAxiom Exact inference code is available on GitHub and the Base model weights
+are public on [Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base).
+The optional Docker Space remains a deployment template. All public generation interfaces
 use Exact. Internal naming and the topology metadata label have been migrated to
 MeshAxiom. The private preparation record retains the original source mappings.
 
@@ -11,12 +12,12 @@ source repository. The separate model payload contains only the accepted EMA
 checkpoints and required metadata. Material and
 texture enhancement interfaces remain independent.
 
-Before public release, finalize the authors' code/weight license (including the
-acceleration contribution), respect the embedded DINOv3 terms, publish the actual
-Hub model revision and complete `verify-exact` on the target GPU. `VALIDATION.json`
-records the precise checks performed on this integrated candidate. The Docker
-Space is a deployment template; preparation does not mean it is hosted or that a
-cold build has passed.
+The verified model revision is `859a522c77e25770619f16e89a57447a0bb9bc16`.
+The authors' code/weight license assignment (including the acceleration
+contribution) and target GPU `verify-exact` remain pending. Public availability
+does not assign a new license; the embedded DINOv3 and other third-party terms
+still apply. `VALIDATION.json` records the checks performed on this integrated
+candidate. A hosted Space and a successful cold Docker build are not claimed.
 
 GitHub source/wheel archives must contain no model checkpoints, runtime outputs,
 private infrastructure paths, credentials, obsolete package names or development

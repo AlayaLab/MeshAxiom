@@ -3,8 +3,9 @@
 Sho Kuno provided the Exact CUDA-graph vertex/topology implementation and the
 vectorized post-processing integrated here. Public source identity hashes and
 adaptation notes are recorded in `src/meshaxiom/vendor/kuno/ORIGIN.json`.
-The delivered source did not include a standalone license; the authors' release
-license must cover it before publication.
+The delivered source did not include a standalone license; the authors' license
+assignment for the integrated contribution remains pending. Public availability
+does not assign a new license.
 
 The Base geometry models include frozen DINOv3 image-backbone tensors. Their
 use and redistribution are governed by the DINOv3 terms included with the model

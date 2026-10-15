@@ -50,6 +50,8 @@ The author's original Exact identity and timing evidence does not establish
 identity on every GPU, stack or input. The bundled `verify-exact` command compares
 the newly branded reference against Exact on the target machine.
 
-The public code/weight license and actual Hub repository revision are not yet
-finalized. This model card is preparation for publication under AlayaLab; it is
-not a claim that the model or an interactive Space has been deployed.
+The [MeshAxiom-Base model repository](https://huggingface.co/AlayaLab/MeshAxiom-Base)
+is public. The verified model revision is
+`859a522c77e25770619f16e89a57447a0bb9bc16`. The authors' code/weight license
+assignment and target GPU identity verification remain pending. An interactive
+Space is not hosted yet.

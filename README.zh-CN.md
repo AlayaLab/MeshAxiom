@@ -26,7 +26,7 @@ with MeshAxiomPipeline.from_pretrained("models/MeshAxiom-Base") as pipeline:
     result = pipeline.generate("image.png", "outputs/object", face_budget=4000)
 ```
 
-[MeshAxiom-Base 模型库](https://huggingface.co/AlayaLab/MeshAxiom-Base)目前为私有预发布，仅限获授权的协作者访问，尚未开放公开下载。获授权后可用模型 ID `AlayaLab/MeshAxiom-Base` 和已验收的完整 commit SHA `859a522c77e25770619f16e89a57447a0bb9bc16` 加载。GitHub 只放代码；模型目录含三份纯 EMA 权重和 DINOv3 配置。冻结的 DINOv3 张量已包含在 EMA 中，无需再次下载一整份编码器权重。
+[MeshAxiom-Base 模型库](https://huggingface.co/AlayaLab/MeshAxiom-Base)已开放公开下载，可用模型 ID `AlayaLab/MeshAxiom-Base` 和已验收的完整 commit SHA `859a522c77e25770619f16e89a57447a0bb9bc16` 加载。GitHub 只放代码；模型目录含三份纯 EMA 权重和 DINOv3 配置。冻结的 DINOv3 张量已包含在 EMA 中，无需再次下载一整份编码器权重。
 
 面数请求是生成条件，实际面数如实报告，不强制减面。输出包括 OBJ、GLB、JSON、顶点和原始拓扑，以及输入和权重校验记录。首次请求需要加载模型；服务中的后续请求直接复用。使用 `with` 或 `close()` 释放模型。
 
@@ -40,4 +40,4 @@ meshaxiom verify-exact --config models/MeshAxiom-Base/meshaxiom.json --image exa
 
 Agent 使用 [JSON 工具与 HTTP 接口](docs/AGENT_USAGE.md)。[材质生成](docs/MATERIALS.md) 独立提供，不需要先加载几何模型。Hugging Face 模型与 Space 的准备方法见 [部署说明](docs/HUGGINGFACE.md)。
 
-本目录为代码发布候选；模型库为私有预发布，托管 Space 尚未上线。许可证、真实 Hub revision 和目标机器验收状态见 [发布状态](docs/RELEASE_PREPARATION.md)。
+本目录为代码发布候选；模型库已公开，托管 Space 尚未上线。许可证、真实 Hub revision 和目标机器验收状态见 [发布状态](docs/RELEASE_PREPARATION.md)。

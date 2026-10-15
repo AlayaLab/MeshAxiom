@@ -1,9 +1,9 @@
-# MeshAxiom model release status
+# MeshAxiom licensing
 
-This is a local release candidate. The authors have not yet assigned the public
-license for the MeshAxiom weights or the integrated acceleration source.
-Do not label these artifacts MIT, Apache-2.0, or another license without that decision.
+The MeshAxiom code and Base model weights are publicly available. The authors'
+standalone code/weight license has not yet been assigned. This release note does
+not assign an MIT, Apache-2.0 or other general license.
 
 The three EMA checkpoints contain frozen DINOv3 backbone tensors. Their use and
-redistribution remain subject to the DINOv3 license in external/dinov3/LICENSE.md.
-This file must be finalized before public publication; it is not a new grant of rights.
+redistribution remain subject to `external/dinov3/LICENSE.md`. Preserve that license
+and all applicable third-party notices.
