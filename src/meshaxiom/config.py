@@ -19,7 +19,9 @@ def load_config(value):
         config = copy.deepcopy(value)
         root = Path.cwd()
     elif isinstance(value, (str, os.PathLike)):
-        p = Path(value).expanduser().resolve()
+        # A Hub snapshot's JSON file is itself a symlink into blobs/. Resolve
+        # relative assets beside the requested config, not beside that blob.
+        p = Path(os.path.abspath(Path(value).expanduser()))
         try:
             config = json.loads(p.read_text())
         except (OSError, ValueError) as exc:
@@ -41,7 +43,10 @@ def load_config(value):
             raise MeshAxiomError(name + " must be a Python interpreter path")
         # Preserve the executable's symlink: resolving a venv's Python target
         # would discard its environment and load the base interpreter instead.
-        resolved = os.path.abspath(os.path.join(root, os.path.expandvars(os.path.expanduser(value)))) if "/" in value or value.startswith(("~", ".")) else shutil.which(value)
+        if value in {"python", "python3"}:
+            resolved = sys.executable
+        else:
+            resolved = os.path.abspath(os.path.join(root, os.path.expandvars(os.path.expanduser(value)))) if "/" in value or value.startswith(("~", ".")) else shutil.which(value)
         # Keep the invalid path for doctor to explain; execution rejects it.
         runtime[name] = resolved or value
     runtime.setdefault("device", "cuda:0")
@@ -68,7 +73,7 @@ def load_config(value):
     image_model = config.get("geometry", {}).get("image_model")
     if image_model is not None and (not isinstance(image_model, str) or not image_model):
         raise MeshAxiomError("geometry.image_model must be a nonempty model ID or directory")
-    if image_model and (image_model.startswith((".", "/", "~")) or os.path.exists(image_model)):
+    if image_model and (image_model.startswith((".", "/", "~")) or (root / os.path.expandvars(image_model)).exists()):
         config["geometry"]["image_model"] = _path(image_model, root)
     geometry = config.get("geometry", {})
     if geometry:

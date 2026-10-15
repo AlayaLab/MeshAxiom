@@ -23,6 +23,20 @@ DOWNLOAD_FILES = ["weights/" + row["file"] for row in EXPECTED_WEIGHTS.values()]
 def model_config(directory, *, device="cuda:0"):
     directory = Path(directory).expanduser().resolve()
     from .config import load_config
+    try:
+        declared = json.loads((directory / "meshaxiom.json").read_text())
+    except (OSError, ValueError) as exc:
+        raise MeshAxiomError("Cannot read the downloaded model configuration") from exc
+    declared_geometry = declared.get("geometry", {}) if isinstance(declared, dict) else {}
+    if not isinstance(declared_geometry, dict):
+        raise MeshAxiomError("Model geometry configuration must be an object")
+    # Validate the declared snapshot entries before following normal Hub cache
+    # symlinks. The resulting blob files legitimately live outside snapshots/.
+    for key, expected in EXPECTED_WEIGHTS.items():
+        row = declared_geometry.get(key, {})
+        _require_snapshot_entry(row.get("path") if isinstance(row, dict) else None,
+                                Path("weights") / expected["file"])
+    _require_snapshot_entry(declared_geometry.get("image_model"), Path("external/dinov3"))
     config = load_config(directory / "meshaxiom.json")
     geometry = config.get("geometry", {})
     if geometry.get("implementation") != "exact":
@@ -31,17 +45,23 @@ def model_config(directory, *, device="cuda:0"):
         row = geometry.get(key, {})
         if any(row.get(name) != expected[name] for name in ["sha256", "step", "weights"]):
             raise MeshAxiomError("Downloaded model is not the released Base EMA recipe: " + key)
-        if Path(row.get("path", "")).resolve() != directory / "weights" / expected["file"]:
+        if Path(row.get("path", "")).resolve() != (directory / "weights" / expected["file"]).resolve():
             raise MeshAxiomError("Model checkpoint must stay inside its downloaded snapshot")
     if geometry.get("topology_seed") != 1574365204:
         raise MeshAxiomError("The released topology seed must be 1574365204")
-    if Path(geometry.get("image_model", "")).resolve() != directory / "external/dinov3":
+    if Path(geometry.get("image_model", "")).resolve() != (directory / "external/dinov3").resolve():
         raise MeshAxiomError("Image processor must use the local released DINOv3 configuration")
     import os
     import tempfile
     config["runtime"]["gpu_lock_directory"] = str(Path(os.environ.get("MESHAXIOM_LOCK_DIRECTORY", Path(tempfile.gettempdir()) / "meshaxiom-gpu-locks")))
     config["runtime"]["device"] = device
     return config
+
+
+def _require_snapshot_entry(value, expected):
+    if (not isinstance(value, str) or Path(value).is_absolute()
+            or ".." in Path(value).parts or Path(value) != expected):
+        raise MeshAxiomError("Model data must use its released snapshot entry: " + str(expected))
 
 
 def download_model(repo_id, *, revision=None, cache_dir=None, local_files_only=False, token=None):

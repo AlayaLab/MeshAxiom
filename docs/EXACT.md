@@ -35,5 +35,4 @@ Existing author evidence reports four-input file identity and approximately 1.6Ã
 median acceleration over 400 development requests at a 4K request on H200. Those
 measurements cover sampling and decoding with models resident and exclude loading.
 They describe the original delivered implementation. The integration's own
-validation status is recorded in `VALIDATION.json`; CPU checks do not establish
-CUDA-graph identity or new latency measurements.
+validation is recorded in `VALIDATION.json`: 95 CPU tests and an H200 canary using one image at 4K and 8K requests. All four geometry files match byte for byte, and both implementations reuse their resident workers across requests. This covers only those inputs, seeds, weights and software stack; it is not a new speed benchmark or a guarantee for other hardware.

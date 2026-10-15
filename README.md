@@ -58,7 +58,7 @@ The **[3D asset library](https://alaya-lab.github.io/MeshAxiom/space-kit.html)**
 - [ ] MeshAxiom workflow and tools
 - [ ] Paper and workflow documentation
 
-The code includes CLI, Python, agent and local upload interfaces, with separate material tools. The Hugging Face model repository is public. The current validation covers CPU tests and tensor preservation; target GPU identity and the authors' license assignment remain pending.
+The code includes CLI, Python, agent and local upload interfaces, with separate material tools. The Hugging Face model repository is public. Version `0.2.0.dev1` passes 95 CPU tests and a bounded H200 check: reference and Exact produce identical geometry files for one image at 4K and 8K requests, including resident worker reuse. See [validation](VALIDATION.json). The authors' license assignment remains pending.
 
 
 ## Install
@@ -96,7 +96,7 @@ Load the public Hub repository `AlayaLab/MeshAxiom-Base` at the verified model r
 ```python
 with MeshAxiomPipeline.from_pretrained(
     "AlayaLab/MeshAxiom-Base",
-    revision="859a522c77e25770619f16e89a57447a0bb9bc16",
+    revision="b80240ce4f77a28bc4debdcca895e96c78ddb294",
 ) as pipeline:
     first = pipeline.generate("first.png", "outputs/first", face_budget=4000)
     second = pipeline.generate("second.png", "outputs/second", face_budget=8000)

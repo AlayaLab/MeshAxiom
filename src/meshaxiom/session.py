@@ -29,7 +29,6 @@ class ResidentWorker:
         self.reference = reference
 
     def _start(self):
-        read_fd, write_fd = os.pipe()
         env = os.environ.copy()
         # Only the child is changed; no global environment or installation edits.
         for key in list(env):
@@ -48,6 +47,9 @@ class ResidentWorker:
             path = cache / self.stage / part
             path.mkdir(parents=True, exist_ok=True)
             env[variable] = str(path)
+        # Cache preparation can fail (read-only filesystem, a file in place of
+        # a directory). Allocate pipe FDs only after those operations succeed.
+        read_fd, write_fd = os.pipe()
         try:
             self.process = subprocess.Popen(
                 [self.runtime[self.stage + "_python"], "-m", "meshaxiom.workers.resident",

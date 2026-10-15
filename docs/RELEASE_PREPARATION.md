@@ -12,9 +12,9 @@ source repository. The separate model payload contains only the accepted EMA
 checkpoints and required metadata. Material and
 texture enhancement interfaces remain independent.
 
-The verified model revision is `859a522c77e25770619f16e89a57447a0bb9bc16`.
+The verified model revision is `b80240ce4f77a28bc4debdcca895e96c78ddb294`.
 The authors' code/weight license assignment (including the acceleration
-contribution) and target GPU `verify-exact` remain pending. Public availability
+contribution) remains pending. Version `0.2.0.dev1` passes 95 CPU tests and a bounded H200 reference/Exact identity check: one image at 4K and 8K, four identical geometry files per request, and resident worker reuse. Public availability
 does not assign a new license; the embedded DINOv3 and other third-party terms
 still apply. `VALIDATION.json` records the checks performed on this integrated
 candidate. A hosted Space and a successful cold Docker build are not claimed.

@@ -33,7 +33,7 @@ with MeshAxiomPipeline.from_pretrained(
     result = model.generate("image.png", "outputs/object", face_budget=4000)
 ```
 
-The pinned revision contains the verified Base weights. A local model directory
+The pinned revision is the weight-identity baseline; current validation is recorded in this repository's latest `VALIDATION.json`. Install MeshAxiom code version `0.2.0.dev1` or later for the Hub-cache and worker-startup fixes. A local model directory
 can also be used. This repository supplies model data; the source package supplies
 the inference implementation. `model_index.json` is descriptive metadata, not a
 Diffusers pipeline.
@@ -46,13 +46,12 @@ files include a transform into glTF's Y-up frame.
 ## Verification and limitations
 
 All 2,128 EMA tensors were preserved and the three models loaded strictly on CPU.
-76 CPU tests passed. Uploaded weight hashes and authenticated sample byte ranges
+Version `0.2.0.dev1` passes 95 CPU tests. Uploaded weight hashes and authenticated sample byte ranges
 match the verified local files. See `WEIGHTS.json`, `VALIDATION.json` and
 `SHA256SUMS` for the recorded model identities and validation scope.
 
 Sho Kuno contributed the Exact acceleration. His tested platform is H200 with
-NVIDIA PyTorch 25.03. Target GPU identity and a cold Docker build of this integrated
-release remain to be verified; run `meshaxiom verify-exact` on your target setup.
+NVIDIA PyTorch 25.03. This integrated release also passed a bounded H200 check: one image at 4K and 8K requests, with all four geometry files identical to the reference and resident workers reused between requests. This covers only the recorded inputs, seeds, weights and stack. A cold Docker build remains unverified; run `meshaxiom verify-exact` on your target setup.
 Geometry can have open boundaries or degenerate faces.
 
 ## License

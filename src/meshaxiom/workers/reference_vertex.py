@@ -15,8 +15,8 @@ def run(request: dict) -> str:
     import numpy as np
     import torch
     from meshaxiom.workers._geometry_state import load
-    from meshaxiom.vendor.recipe.gen_mbr128 import per_level, sample_mbr
     state = load(request, "vertex", exact=False)
+    from meshaxiom.vendor.recipe.gen_mbr128 import per_level, sample_mbr
     out = Path(request["output_dir"])
     report_path = out / "vertex_report.json"
     if report_path.exists() or (out / "vertices.npz").exists():

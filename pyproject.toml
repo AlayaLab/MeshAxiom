@@ -4,16 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "meshaxiom"
-version = "0.2.0.dev0"
+version = "0.2.0.dev1"
 description = "MeshAxiom Exact image-to-mesh inference and independent texturing"
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 dependencies = ["numpy>=1.26,<1.27", "Pillow>=11", "trimesh>=4", "scipy>=1.11", "PyYAML>=6"]
 
 [project.optional-dependencies]
-geometry = ["torch>=2.7.0a0,<2.8", "transformers==4.57.3", "safetensors>=0.5,<0.6", "einops>=0.8,<0.9"]
+geometry = ["torch>=2.7.0a0,<2.8", "torchvision>=0.22.0a0,<0.23", "transformers==4.57.3", "safetensors>=0.5,<0.6", "einops>=0.8,<0.9"]
 background = ["rembg==2.0.61", "onnxruntime>=1.18", "opencv-python-headless>=4.9,<4.12"]
-material = ["opencv-python-headless>=4.9,<4.12", "torch>=2.7.0a0,<2.8", "transformers==4.57.3", "safetensors>=0.5,<0.6", "einops>=0.8,<0.9"]
+material = ["opencv-python-headless>=4.9,<4.12", "torch>=2.7.0a0,<2.8", "torchvision>=0.22.0a0,<0.23", "transformers==4.57.3", "safetensors>=0.5,<0.6", "einops>=0.8,<0.9"]
 superresolution = ["torch>=2.7.0a0,<2.8"]
 hub = ["huggingface_hub>=0.36,<2"]
 postprocess = ["numba==0.59.1", "llvmlite==0.42.0"]

@@ -19,13 +19,13 @@ The staging receipt and `SHA256SUMS` belong with the model payload. SHA256 binds
 file content, so the renamed topology archive has its own checksum.
 
 The public model repository is `AlayaLab/MeshAxiom-Base`. Its verified model
-revision is `859a522c77e25770619f16e89a57447a0bb9bc16`. Consumers can use:
+revision is `b80240ce4f77a28bc4debdcca895e96c78ddb294`. Consumers can use:
 
 ```python
 from meshaxiom import MeshAxiomPipeline
 pipeline = MeshAxiomPipeline.from_pretrained(
     "AlayaLab/MeshAxiom-Base",
-    revision="859a522c77e25770619f16e89a57447a0bb9bc16",
+    revision="b80240ce4f77a28bc4debdcca895e96c78ddb294",
 )
 ```
 
@@ -42,13 +42,12 @@ and retain the source tree and application path, then set:
 - `HF_TOKEN` as a Space secret if model access requires it.
 
 The app loads lazily, keeps both stage workers resident, serializes requests and
-provides mesh downloads. Hardware validation currently comes from the author's
-H200 environment. Choose GPU memory only after a target canary; an arbitrary
+provides mesh downloads. Version `0.2.0.dev1` also passed a bounded H200 identity check using one image at 4K and 8K requests, including resident worker reuse. Choose GPU memory only after a target canary; an arbitrary
 small GPU is not assumed sufficient. Run `doctor` and `verify-exact` before serving.
 See [Docker Spaces](https://huggingface.co/docs/hub/spaces-sdks-docker) for the
 container port and runtime hardware requirements.
 
 The code and model weights are public; the Docker Space remains a deployment
 template. The staging scripts do not upload or create a Space. The authors'
-license assignment and target GPU verification are tracked in
+license assignment and validation scope are tracked in
 `docs/RELEASE_PREPARATION.md`.

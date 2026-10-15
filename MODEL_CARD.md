@@ -45,13 +45,13 @@ uses separately acquired RealESRGAN weights. See [materials](docs/MATERIALS.md).
 
 ## Validation and release status
 
-[VALIDATION.json](VALIDATION.json) describes checks on this integrated candidate.
+[VALIDATION.json](VALIDATION.json) records 95 passing CPU tests and one-image H200 reference/Exact identity at 4K and 8K requests, including resident worker reuse.
 The author's original Exact identity and timing evidence does not establish
 identity on every GPU, stack or input. The bundled `verify-exact` command compares
 the newly branded reference against Exact on the target machine.
 
 The [MeshAxiom-Base model repository](https://huggingface.co/AlayaLab/MeshAxiom-Base)
 is public. The verified model revision is
-`859a522c77e25770619f16e89a57447a0bb9bc16`. The authors' code/weight license
-assignment and target GPU identity verification remain pending. An interactive
+`b80240ce4f77a28bc4debdcca895e96c78ddb294`. The authors' code/weight license
+assignment remains pending. An interactive
 Space is not hosted yet.
