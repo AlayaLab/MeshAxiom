@@ -2,7 +2,7 @@
 
 **面向 Agent 的三维基础模型与可编程世界工作流**
 
-[项目主页](https://alaya-lab.github.io/MeshAxiom/) · [Hugging Face](https://huggingface.co/AlayaLab) · [GitHub](https://github.com/AlayaLab/MeshAxiom)
+[项目主页](https://alaya-lab.github.io/MeshAxiom/) · [Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base) · [GitHub](https://github.com/AlayaLab/MeshAxiom)
 
 本包只提供 **Exact 无损加速推理**。使用 Base 的同一组 EMA 权重、MBR8、20 步和拓扑 CFG 3，接入 Sho Kuno 的 CUDA Graph 与 K/V 缓存实现。模型常驻两个隔离 worker，连续请求复用模型。
 
@@ -26,7 +26,7 @@ with MeshAxiomPipeline.from_pretrained("models/MeshAxiom-Base") as pipeline:
     result = pipeline.generate("image.png", "outputs/object", face_budget=4000)
 ```
 
-Hugging Face 发布后，也可使用实际模型 ID 和完整 commit SHA 加载。GitHub 只放代码；模型目录含三份纯 EMA 权重和 DINOv3 配置。冻结的 DINOv3 张量已包含在 EMA 中，无需再次下载一整份编码器权重。
+[MeshAxiom-Base 模型库](https://huggingface.co/AlayaLab/MeshAxiom-Base)目前为私有预发布，仅限获授权的协作者访问，尚未开放公开下载。获授权后可用模型 ID `AlayaLab/MeshAxiom-Base` 和已验收的完整 commit SHA `859a522c77e25770619f16e89a57447a0bb9bc16` 加载。GitHub 只放代码；模型目录含三份纯 EMA 权重和 DINOv3 配置。冻结的 DINOv3 张量已包含在 EMA 中，无需再次下载一整份编码器权重。
 
 面数请求是生成条件，实际面数如实报告，不强制减面。输出包括 OBJ、GLB、JSON、顶点和原始拓扑，以及输入和权重校验记录。首次请求需要加载模型；服务中的后续请求直接复用。使用 `with` 或 `close()` 释放模型。
 
@@ -40,4 +40,4 @@ meshaxiom verify-exact --config models/MeshAxiom-Base/meshaxiom.json --image exa
 
 Agent 使用 [JSON 工具与 HTTP 接口](docs/AGENT_USAGE.md)。[材质生成](docs/MATERIALS.md) 独立提供，不需要先加载几何模型。Hugging Face 模型与 Space 的准备方法见 [部署说明](docs/HUGGINGFACE.md)。
 
-本目录为发布候选，未代替正式公开发布。许可证、真实 Hub revision 和目标机器验收状态见 [发布状态](docs/RELEASE_PREPARATION.md)。
+本目录为代码发布候选；模型库为私有预发布，托管 Space 尚未上线。许可证、真实 Hub revision 和目标机器验收状态见 [发布状态](docs/RELEASE_PREPARATION.md)。

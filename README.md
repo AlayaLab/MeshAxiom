@@ -9,7 +9,7 @@
 
 **[AlayaLab](https://github.com/AlayaLab)**
 
-[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-Hugging%20Face-FFD21E)](https://huggingface.co/AlayaLab)
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-Hugging%20Face-FFD21E)](https://huggingface.co/AlayaLab/MeshAxiom-Base)
 [![Code](https://img.shields.io/badge/Code-GitHub-24292F)](https://github.com/AlayaLab/MeshAxiom)
 [![Project Page](https://img.shields.io/badge/Project-Page-1683D8)](https://alaya-lab.github.io/MeshAxiom/)
 [![3D Asset Library](https://img.shields.io/badge/3D-Asset%20Library-5B6EE1)](https://alaya-lab.github.io/MeshAxiom/space-kit.html)
@@ -22,7 +22,7 @@
 
 MeshAxiom connects compact, explicit 3D meshes to persistent asset records and programmable scene state. **MeshAxiom-Base** turns a single image and a requested face budget into a native triangle mesh. File-based tools let programs and agents inspect and revise these assets, reuse them as modules, and control scene transforms, motion and cameras.
 
-This is the official repository for the MeshAxiom model and workflow. The project website and interactive asset library are available now; Exact inference code is included below as a release candidate. Model weights are being prepared on [Hugging Face](https://huggingface.co/AlayaLab); the paper and remaining workflow tools will follow.
+This is the official repository for the MeshAxiom model and workflow. The project website and interactive asset library are available now; Exact inference code is included below as a release candidate. Model weights are available in the private [MeshAxiom-Base repository on Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base), with access limited to authorized collaborators; the paper and remaining workflow tools will follow.
 
 ## Agent-Native 3D Authoring
 
@@ -54,11 +54,11 @@ The **[3D asset library](https://alaya-lab.github.io/MeshAxiom/space-kit.html)**
 - [x] Project website and Space Saga showcase
 - [x] Interactive 3D asset library and asset downloads
 - [x] MeshAxiom-Base Exact inference code (release candidate)
-- [ ] Model weights
+- [ ] Public model weights
 - [ ] MeshAxiom workflow and tools
 - [ ] Paper and workflow documentation
 
-The code includes CLI, Python, agent and local upload interfaces, with separate material tools. Model weights are not available yet. The current validation covers CPU tests and tensor preservation; target GPU identity and the public release license remain pending.
+The code includes CLI, Python, agent and local upload interfaces, with separate material tools. The Hugging Face model repository is a private pre-release; weights are not generally publicly downloadable. The current validation covers CPU tests and tensor preservation; target GPU identity and the public release license remain pending.
 
 
 ## Install
@@ -91,10 +91,13 @@ with MeshAxiomPipeline.from_pretrained("models/MeshAxiom-Base") as pipeline:
     print(result["artifacts"]["obj"]["path"])
 ```
 
-Once the model is published, use its real Hub repository ID and full commit SHA:
+Authorized collaborators can use the Hub repository ID `AlayaLab/MeshAxiom-Base` and its full commit SHA; public access remains pending:
 
 ```python
-with MeshAxiomPipeline.from_pretrained(model_id, revision=model_commit_sha) as pipeline:
+with MeshAxiomPipeline.from_pretrained(
+    "AlayaLab/MeshAxiom-Base",
+    revision="859a522c77e25770619f16e89a57447a0bb9bc16",
+) as pipeline:
     first = pipeline.generate("first.png", "outputs/first", face_budget=4000)
     second = pipeline.generate("second.png", "outputs/second", face_budget=8000)
 ```
@@ -147,9 +150,9 @@ loading the Base geometry model.
 
 [Hugging Face deployment](docs/HUGGINGFACE.md) describes the model payload and
 Docker Space. [Release status](docs/RELEASE_PREPARATION.md) records what must be
-finalized before publication. This is a local release candidate, not a claim
-that model weights or a hosted Space are already available. Model uploads are
-planned under [AlayaLab on Hugging Face](https://huggingface.co/AlayaLab).
+finalized before publication. This is a source release candidate. The [MeshAxiom-Base model repository](https://huggingface.co/AlayaLab/MeshAxiom-Base)
+is a private pre-release with access limited to authorized collaborators.
+A hosted Space is not available yet.
 
 Sho Kuno provided the Exact inference acceleration. Third-party notices and
 DINOv3 terms are retained; see [licenses and dependencies](docs/THIRD_PARTY.md).
