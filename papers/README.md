@@ -1,5 +1,8 @@
-# Papers
+# MeshAxiom Paper and Citation
 
-后续在此目录添加论文 PDF 与引用信息。
+**MeshAxiom: An Agent-Native 3D Foundation Stack for Programmable Worlds**
 
-论文发布后，可将仓库首页中的 `Paper: 待添加` 和 `Paper: Coming Soon` 徽章替换为正式论文链接。
+The paper remains a planned release. Add the PDF and verified citation details here after publication; no paper identifier or publication venue is claimed yet.
+
+Project page: https://alaya-lab.github.io/MeshAxiom/
+Code repository: https://github.com/AlayaLab/MeshAxiom

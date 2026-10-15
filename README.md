@@ -1,6 +1,6 @@
 <div align="center">
 
-# AlayaCrafter: An Open-Source 3D Foundation Stack for AI-Native Games
+# MeshAxiom: An Agent-Native 3D Foundation Stack for Programmable Worlds
 
 [Yonghao Yu](https://scholar.google.com/citations?user=lwuwuAYAAAAJ) · [Ruihan Yu](https://auroraryan0301.github.io/) · [Sho Kuno](https://shokuno5.github.io/) · [Muyao Niu](https://myniuuu.github.io/) · [Yu-Ju Tsai](https://liagm.github.io/) · [Zheng-Hui Huang](https://brian90709.github.io/) · [Chuanhao Li](https://nevermorelch.github.io/) · [Fengbo Lan](https://openreview.net/profile?id=%7EFengbo_Lan1) · [Guixu Lin](https://www.researchgate.net/profile/Guixu_Lin) · [Runyi Li](https://lirunyi2001.github.io/) · [Ming-Hsuan Yang](https://faculty.ucmerced.edu/mhyang/) · [Kaipeng Zhang](https://kpzhang93.github.io/)<sup>†</sup> · [Zhixiang Wang](https://lightchaserx.github.io/)<sup>†</sup>
 
@@ -9,8 +9,9 @@
 
 **[AlayaLab](https://github.com/AlayaLab)**
 
-[![Project Page](https://img.shields.io/badge/Project-Page-1683D8)](https://alaya-lab.github.io/AlayaCrafter/)
-[![3D Asset Library](https://img.shields.io/badge/3D-Asset%20Library-5B6EE1)](https://alaya-lab.github.io/AlayaCrafter/space-kit.html)
+[![Code](https://img.shields.io/badge/Code-GitHub-24292F)](https://github.com/AlayaLab/MeshAxiom)
+[![Project Page](https://img.shields.io/badge/Project-Page-1683D8)](https://alaya-lab.github.io/MeshAxiom/)
+[![3D Asset Library](https://img.shields.io/badge/3D-Asset%20Library-5B6EE1)](https://alaya-lab.github.io/MeshAxiom/space-kit.html)
 
 **Compact meshes. Explicit topology. Editable worlds.**
 
@@ -18,15 +19,15 @@
 
 ## Overview
 
-AlayaCrafter brings compact, editable 3D assets into an explicit scene state for AI-native game engines. **AlayaCrafter-Base** turns a single image into a native triangle mesh with a controllable face budget. Programs and agents can inspect these meshes, assemble them into scenes, and author their motion.
+MeshAxiom connects compact, explicit 3D meshes to persistent asset records and programmable scene state. **MeshAxiom-Base** turns a single image and a requested face budget into a native triangle mesh. File-based tools let programs and agents inspect and revise these assets, reuse them as modules, and control scene transforms, motion and cameras.
 
-This is the official repository for the AlayaCrafter model and workflow. The project website and interactive asset library are available now; code, model weights and the paper are planned for release here.
+This is the official repository for the MeshAxiom model and workflow. The project website and interactive asset library are available now; code, model weights and the paper are planned for release here.
 
-## Designed for Agent-Efficient 3D Authoring
+## Agent-Native 3D Authoring
 
-AI-native engines need a 3D state that their simulation, controllers and agents can read and edit. Compact geometry and explicit triangle connectivity give agents concrete objects to work with. Geometry, transforms, cameras and motion remain accessible throughout scene construction and revision.
+Agent-native describes the interface: agents call tools on asset files, receive compact summaries and rendered views, and retain geometry and generation recipes for later operations. Compact geometry and explicit triangle connectivity provide objects that geometric code and scene programs can read and edit.
 
-AlayaCrafter-Base generates vertices coarse to fine with a diffusion transformer over a sparse octree, then predicts connectivity with a second diffusion transformer in the latent space of a topology autoencoder. A face budget controls mesh complexity.
+MeshAxiom-Base generates vertices coarse to fine with a diffusion transformer over a sparse octree, then predicts connectivity with a second diffusion transformer in the latent space of a topology autoencoder. The requested face budget conditions generation; realized counts can differ from the request.
 
 ## From Meshes to Worlds
 
@@ -41,19 +42,19 @@ A video-generation model can use a control video as a soft condition for an addi
 
 ## Explore Space Saga
 
-**[Space Saga](https://alaya-lab.github.io/AlayaCrafter/#saga)** showcases twelve scenes built from the space asset kit, including stations, fleets, shipyards, moon bases and alien encounters. Compare **Materials** with **Gray mesh** or **Topology** on the same scene timeline.
+**[Space Saga](https://alaya-lab.github.io/MeshAxiom/#saga)** showcases twelve scenes built from the space asset kit, including stations, fleets, shipyards, moon bases and alien encounters. Compare **Materials** with **Gray mesh** or **Topology** on the same scene timeline.
 
-All twelve scenes use AlayaCrafter generated meshes with their original topology.
+The twelve scenes use generated meshes in explicit scene programs. Bounded mesh repairs and external material refinement belong to the authoring workflow, separate from raw-model measurements.
 
-The **[3D asset library](https://alaya-lab.github.io/AlayaCrafter/space-kit.html)** contains **123 assets**, with input-image, gray-mesh, topology and material views, interactive 3D inspection and original GLB downloads. Explore modular assemblies and scenes built from the kit, with **Materials**, **Gray mesh** and **Topology** comparisons.
+The **[3D asset library](https://alaya-lab.github.io/MeshAxiom/space-kit.html)** contains **123 assets**, with input-image, gray-mesh, topology and material views, interactive 3D inspection and original GLB downloads. Explore modular assemblies and scenes built from the kit, with **Materials**, **Gray mesh** and **Topology** comparisons.
 
 ## Release Status
 
 - [x] Project website and Space Saga showcase
 - [x] Interactive 3D asset library and asset downloads
-- [ ] AlayaCrafter-Base code
+- [ ] MeshAxiom-Base code
 - [ ] Model weights
-- [ ] AlayaCrafter workflow and tools
+- [ ] MeshAxiom workflow and tools
 - [ ] Paper and workflow documentation
 
 Installation instructions, model download links and paper details will be added here as each release becomes available.

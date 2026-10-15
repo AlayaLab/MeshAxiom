@@ -1,13 +1,10 @@
-# Project Page
+# MeshAxiom Project Page
 
-预留的 GitHub Pages 地址：[AlayaCrafter](https://alayalab.github.io/AlayaCrafter/)。
+Canonical project-page target: [MeshAxiom](https://alaya-lab.github.io/MeshAxiom/).
+Code repository target: [AlayaLab/MeshAxiom](https://github.com/AlayaLab/MeshAxiom).
 
-**状态：尚未上线。** 当前保留私有仓库，未启用 Pages；这个链接记录的是后续发布目标，并非已部署的网站。
+This directory retains the repository's placeholder page. It is not the source of the full showcase, and updating it does not enable GitHub Pages or establish that the new target is deployed. The project website and asset collection are separate from the planned code, model-weight and paper releases.
 
-页面源文件放在此目录。`index.html` 是可替换的占位页，后续可同步正式项目主页、样式、脚本和展示资源。
+The existing showcase deployment remains at [the current demo endpoint](https://alayacraftertest.y0uroy.chatgpt.site/alaya-kit/index.html); its URL is retained as an existing deployment location.
 
-参考格式：[PWM Project Page](https://alaya-lab.github.io/pwm/)。
-
-当前演示：[AlayaCrafter Demo](https://alayacraftertest.y0uroy.chatgpt.site/alaya-kit/index.html)。
-
-启用私有仓库的 Pages 需要组织计划支持；发布前确认只部署主页目录中的内容。
+Only intended public project-page content should be deployed. Do not add internal inference bundles, weights, local configuration or credentials to this directory.
