@@ -2,11 +2,6 @@
 
 # MeshAxiom: An Agent-Native 3D Foundation Stack for Programmable Worlds
 
-[Yonghao Yu](https://scholar.google.com/citations?user=lwuwuAYAAAAJ) · [Ruihan Yu](https://auroraryan0301.github.io/) · [Sho Kuno](https://shokuno5.github.io/) · [Muyao Niu](https://myniuuu.github.io/) · [Yu-Ju Tsai](https://liagm.github.io/) · [Zheng-Hui Huang](https://brian90709.github.io/) · [Chuanhao Li](https://nevermorelch.github.io/) · [Fengbo Lan](https://openreview.net/profile?id=%7EFengbo_Lan1) · [Guixu Lin](https://www.researchgate.net/profile/Guixu_Lin) · [Runyi Li](https://lirunyi2001.github.io/) · [Ming-Hsuan Yang](https://faculty.ucmerced.edu/mhyang/) · [Kaipeng Zhang](https://kpzhang93.github.io/)<sup>†</sup> · [Zhixiang Wang](https://lightchaserx.github.io/)<sup>†</sup>
-
-<sup>†</sup> Corresponding authors
-
-
 **[AlayaLab](https://github.com/AlayaLab)**
 
 [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-Hugging%20Face-FFD21E)](https://huggingface.co/AlayaLab/MeshAxiom-Base)
@@ -15,6 +10,8 @@
 [![3D Asset Library](https://img.shields.io/badge/3D-Asset%20Library-5B6EE1)](https://alaya-lab.github.io/MeshAxiom/space-kit.html)
 
 **Compact meshes. Explicit topology. Editable worlds.**
+
+<img src="assets/teaser.jpg" alt="MeshAxiom teaser: generated meshes with explicit topology and example programmable scenes" width="100%">
 
 </div>
 
