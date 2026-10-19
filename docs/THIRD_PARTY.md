@@ -2,11 +2,7 @@
 
 ## Geometry methodology: Nexus
 
-The geometry generation method follows [Nexus: Native Mesh Generation with Diffusion](https://arxiv.org/abs/2607.13563) (Wang et al., 2026): separate vertex and topology diffusion stages, hierarchical sparse-octree vertex generation, continuous per-vertex topology representations, and Spacetime Interval-based connectivity reconstruction. These core designs are credited to Nexus and are not claimed as original MeshAxiom methods.
-
-MeshAxiom supplies its paper-based reimplementation, Sho Kuno's Exact inference acceleration, agent/tool interfaces and downstream asset/scene workflows. See the [README attribution and citation](https://github.com/AlayaLab/MeshAxiom#relationship-to-nexus) for the technical relationship and bibliography.
-
-This acknowledgment credits the research method. It does not imply an official Nexus release or endorsement of MeshAxiom by the Nexus authors, and it does not alter any code or checkpoint license.
+MeshAxiom-Base's geometry pipeline is a paper-based reimplementation of the two-stage vertex and topology diffusion framework in [Nexus](https://arxiv.org/abs/2607.13563). MeshAxiom builds on this foundation with Exact inference acceleration by Sho Kuno, agent/tool interfaces, and downstream 3D workflows. We thank the Nexus authors for their foundational work.
 
 ## Exact implementation and dependencies
 

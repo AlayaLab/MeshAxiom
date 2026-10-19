@@ -8,9 +8,7 @@
 
 ## 与 Nexus 的技术关系
 
-MeshAxiom-Base 的几何生成流程基于 [Nexus: Native Mesh Generation with Diffusion](https://arxiv.org/abs/2607.13563)（Wang 等，2026）。继承的核心方法包括：顶点与拓扑分别生成的两阶段扩散框架、基于稀疏八叉树的层次化顶点生成、基于逐顶点连续表征的拓扑扩散，以及基于 Spacetime Interval 的网格连接关系重建。
-
-这些核心方法来自 Nexus，我们不将其作为 MeshAxiom 的原创方法。MeshAxiom 在此基础上提供基于论文的复现实现、Sho Kuno 贡献的 Exact 推理加速、面向 Agent 的文件与工具接口，以及资产检查、编辑、复用和场景拼装工作流。感谢 Nexus 作者的基础工作；完整引用见 [英文 README](README.md#relationship-to-nexus)。
+MeshAxiom-Base 的几何生成流程基于 [Nexus](https://arxiv.org/abs/2607.13563) 论文，复现其顶点与拓扑两阶段扩散框架。MeshAxiom 在此基础上集成了 Sho Kuno 贡献的 Exact 推理加速、Agent 工具接口和下游 3D 工作流。感谢 Nexus 作者的基础工作。
 
 ## 安装与生成
 
