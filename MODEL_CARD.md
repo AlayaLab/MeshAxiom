@@ -8,7 +8,7 @@ MBR8, 20 DPM++2M steps, and topology CFG 3. Material generation is independent.
 
 ## Relationship to Nexus
 
-MeshAxiom-Base's geometry pipeline is a paper-based reimplementation of the two-stage vertex and topology diffusion framework in [Nexus](https://arxiv.org/abs/2607.13563). MeshAxiom builds on this foundation with Exact inference acceleration by Sho Kuno, agent/tool interfaces, and downstream 3D workflows. We thank the Nexus authors for their foundational work.
+MeshAxiom-Base's geometry pipeline is a paper-based reimplementation of the two-stage vertex and topology diffusion framework in [Nexus](https://arxiv.org/abs/2607.13563). MeshAxiom builds on this foundation with Exact inference acceleration, agent/tool interfaces, and downstream 3D workflows. We thank the Nexus authors for their foundational work.
 
 ## Checkpoint identities
 

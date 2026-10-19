@@ -8,7 +8,7 @@
 
 ## 与 Nexus 的技术关系
 
-MeshAxiom-Base 的几何生成流程基于 [Nexus](https://arxiv.org/abs/2607.13563) 论文，复现其顶点与拓扑两阶段扩散框架。MeshAxiom 在此基础上集成了 Sho Kuno 贡献的 Exact 推理加速、Agent 工具接口和下游 3D 工作流。感谢 Nexus 作者的基础工作。
+MeshAxiom-Base 的几何生成流程基于 [Nexus](https://arxiv.org/abs/2607.13563) 论文，复现其顶点与拓扑两阶段扩散框架。MeshAxiom 在此基础上集成了 Exact 推理加速、Agent 工具接口和下游 3D 工作流。感谢 Nexus 作者的基础工作。
 
 ## 安装与生成
 
