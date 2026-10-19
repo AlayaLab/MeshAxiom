@@ -19,7 +19,7 @@
 
 MeshAxiom connects compact, explicit 3D meshes to persistent asset records and programmable scene state. **MeshAxiom-Base** turns a single image and a requested face budget into a native triangle mesh. File-based tools let programs and agents inspect and revise these assets, reuse them as modules, and control scene transforms, motion and cameras.
 
-This is the official repository for the MeshAxiom model and workflow. The project website and interactive asset library are available now; Exact inference code is included below as a release candidate. Model weights are hosted in the [MeshAxiom-Base repository on Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base); the paper and remaining workflow tools will follow.
+This is the official repository for the MeshAxiom model and workflow. The project website and interactive asset library are available now; Exact inference code is included below as a release candidate. Model weights are publicly available in the [MeshAxiom-Base repository on Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base); the paper and remaining workflow tools will follow.
 
 ## Agent-Native 3D Authoring
 
@@ -51,11 +51,11 @@ The **[3D asset library](https://alaya-lab.github.io/MeshAxiom/space-kit.html)**
 - [x] Project website and Space Saga showcase
 - [x] Interactive 3D asset library and asset downloads
 - [x] MeshAxiom-Base Exact inference code (release candidate)
-- [x] Model weights on Hugging Face (access required)
+- [x] Public model weights
 - [ ] MeshAxiom workflow and tools
 - [ ] Paper and workflow documentation
 
-The code includes CLI, Python, agent and local upload interfaces, with separate material tools. The Hugging Face model repository currently requires access. The Base recipe uses vertex EMA 100K, topology EMA 10K and VAE EMA 30K. Version `0.2.0.dev2` passes 95 CPU tests and a bounded H200 check: reference and Exact produce identical geometry files for one image at 4K and 8K requests, including resident worker reuse. See [validation](VALIDATION.json). The authors' license assignment remains pending.
+The code includes CLI, Python, agent and local upload interfaces, with separate material tools. The Hugging Face model repository is public. The Base recipe uses vertex EMA 100K, topology EMA 10K and VAE EMA 30K. Version `0.2.0.dev2` passes 95 CPU tests and a bounded H200 check: reference and Exact produce identical geometry files for one image at 4K and 8K requests, including resident worker reuse. See [validation](VALIDATION.json). The authors' license assignment remains pending.
 
 
 ## Install
@@ -88,12 +88,12 @@ with MeshAxiomPipeline.from_pretrained("models/MeshAxiom-Base") as pipeline:
     print(result["artifacts"]["obj"]["path"])
 ```
 
-Authenticate with an authorized Hugging Face account, then load the Hub repository `AlayaLab/MeshAxiom-Base` at the verified model revision:
+Load the public Hub repository `AlayaLab/MeshAxiom-Base` at the verified model revision:
 
 ```python
 with MeshAxiomPipeline.from_pretrained(
     "AlayaLab/MeshAxiom-Base",
-    revision="25a6250fc88e2438e5a666ad8622c3475f64e6b0",
+    revision="adb65c712a1c603e9792c35fc927399deac03643",
 ) as pipeline:
     first = pipeline.generate("first.png", "outputs/first", face_budget=4000)
     second = pipeline.generate("second.png", "outputs/second", face_budget=8000)
@@ -149,7 +149,7 @@ loading the Base geometry model.
 Docker Space. [Release status](docs/RELEASE_PREPARATION.md) records the remaining
 validation and license details for this source release candidate. The
 [MeshAxiom-Base model repository](https://huggingface.co/AlayaLab/MeshAxiom-Base)
-currently requires access. A hosted Space is not available yet.
+is public. A hosted Space is not available yet.
 
 Sho Kuno provided the Exact inference acceleration. Third-party notices and
 DINOv3 terms are retained; see [licenses and dependencies](docs/THIRD_PARTY.md).

@@ -1,8 +1,8 @@
 # Release status
 
 MeshAxiom Exact inference code is available on GitHub and the Base model weights
-are hosted on [Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base).
-The model repository currently requires access. The optional Docker Space remains a deployment template. All public generation interfaces
+are public on [Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base).
+The optional Docker Space remains a deployment template. All public generation interfaces
 use Exact. Internal naming and the topology metadata label have been migrated to
 MeshAxiom. The private preparation record retains the original source mappings.
 
@@ -12,7 +12,7 @@ source repository. The separate model payload contains only the accepted EMA
 checkpoints and required metadata. Material and
 texture enhancement interfaces remain independent.
 
-The verified model revision is `25a6250fc88e2438e5a666ad8622c3475f64e6b0`.
+The verified model revision is `adb65c712a1c603e9792c35fc927399deac03643`.
 The authors' code/weight license assignment (including the acceleration
 contribution) remains pending. Version `0.2.0.dev2` passes 95 CPU tests and a bounded H200 reference/Exact identity check: one image at 4K and 8K, four identical geometry files per request, and resident worker reuse. Repository availability
 does not assign a new license; the embedded DINOv3 and other third-party terms

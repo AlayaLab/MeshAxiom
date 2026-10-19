@@ -17,15 +17,15 @@ already branded EMA files are copied or linked without changing their bytes.
 Every tensor, dtype, key and metadata value is checked on readback. The staging
 receipt and `SHA256SUMS` belong with the model payload.
 
-The model repository is `AlayaLab/MeshAxiom-Base` and currently requires access.
-Authenticate with an authorized account before downloading. Its verified model
-revision is `25a6250fc88e2438e5a666ad8622c3475f64e6b0`. Consumers can use:
+The public model repository is `AlayaLab/MeshAxiom-Base`. No login is required
+to download these weights. Its verified model
+revision is `adb65c712a1c603e9792c35fc927399deac03643`. Consumers can use:
 
 ```python
 from meshaxiom import MeshAxiomPipeline
 pipeline = MeshAxiomPipeline.from_pretrained(
     "AlayaLab/MeshAxiom-Base",
-    revision="25a6250fc88e2438e5a666ad8622c3475f64e6b0",
+    revision="adb65c712a1c603e9792c35fc927399deac03643",
 )
 ```
 
@@ -47,7 +47,7 @@ small GPU is not assumed sufficient. Run `doctor` and `verify-exact` before serv
 See [Docker Spaces](https://huggingface.co/docs/hub/spaces-sdks-docker) for the
 container port and runtime hardware requirements.
 
-The code is public; the model repository currently requires access. The Docker
+The code and model weights are public. The Docker
 Space remains a deployment template. The staging scripts do not upload or create a Space. The authors'
 license assignment and validation scope are tracked in
 `docs/RELEASE_PREPARATION.md`.

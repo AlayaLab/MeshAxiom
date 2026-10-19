@@ -52,7 +52,7 @@ identity on every GPU, stack or input. The bundled `verify-exact` command compar
 the newly branded reference against Exact on the target machine.
 
 The [MeshAxiom-Base model repository](https://huggingface.co/AlayaLab/MeshAxiom-Base)
-currently requires access. The verified model revision is
-`25a6250fc88e2438e5a666ad8622c3475f64e6b0`. The authors' code/weight license
+is public. The verified model revision is
+`adb65c712a1c603e9792c35fc927399deac03643`. The authors' code/weight license
 assignment remains pending. An interactive
 Space is not hosted yet.

@@ -18,7 +18,7 @@ language:
 
 [Project](https://alaya-lab.github.io/MeshAxiom/) · [Code](https://github.com/AlayaLab/MeshAxiom)
 
-Base weights for **Exact** image-to-native-mesh inference. This repository
+Public Base weights for **Exact** image-to-native-mesh inference. This repository
 contains vertex EMA 100K, topology EMA 10K and topology VAE EMA 30K. Install the
 MeshAxiom source package for the Python API, CLI and agent tools. No optimizer,
 training data or alternative inference preset is included.
@@ -38,8 +38,7 @@ with MeshAxiomPipeline.from_pretrained(
 ```
 
 Install MeshAxiom code version `0.2.0.dev2` for this 100K checkpoint; older
-versions expect different weights. Authenticate with an authorized Hugging Face
-account while this repository requires access. A local model directory
+versions expect different weights. No Hugging Face login is required to download these weights. A local model directory
 can also be used. This repository supplies model data; the source package supplies
 the inference implementation. `model_index.json` is descriptive metadata, not a
 Diffusers pipeline.
