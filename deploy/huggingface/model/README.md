@@ -23,6 +23,19 @@ contains vertex EMA 100K, topology EMA 10K and topology VAE EMA 30K. Install the
 MeshAxiom source package for the Python API, CLI and agent tools. No optimizer,
 training data or alternative inference preset is included.
 
+## Relationship to Nexus
+
+MeshAxiom-Base's geometry generation pipeline is based on [Nexus: Native Mesh Generation with Diffusion](https://arxiv.org/abs/2607.13563) (Wang et al., 2026). Our paper-based reimplementation follows the Nexus formulation in these core components:
+
+- Separate diffusion stages for vertex generation and topology generation.
+- Coarse-to-fine vertex generation using sparse octrees.
+- Diffusion over continuous per-vertex topology representations learned by a topology autoencoder.
+- Spacetime Interval-based reconstruction of mesh connectivity.
+
+These core methodological components originate in Nexus; we do not claim them as original contributions of MeshAxiom. MeshAxiom provides its paper-based reimplementation of this pipeline, the Exact inference acceleration contributed by Sho Kuno, file-based agent/tool interfaces, and downstream workflows for inspecting, editing, reusing and assembling generated assets. The geometry formulation should be distinguished from these implementation and system components. We thank the Nexus authors for this foundational work.
+
+## Usage
+
 ```python
 from huggingface_hub import HfApi
 from meshaxiom import MeshAxiomPipeline
@@ -72,3 +85,17 @@ weight download. Third-party terms and notices are retained.
 ## Paper
 
 The arXiv link and citation will be added when the preprint is available.
+
+## Nexus citation
+
+Please cite Nexus when using the geometry-generation formulation described above.
+
+```bibtex
+@article{wang2026nexus,
+  title={Nexus: Native Mesh Generation with Diffusion},
+  author={Wang, Hanxiao and Liu, Ying-Tian and Guo, Yuan-Chen and Feng, Qi-Yuan and Zou, Zi-Xin and Liang, Ding and Zhang, Biao and Cao, Yan-Pei},
+  journal={arXiv preprint arXiv:2607.13563},
+  year={2026},
+  url={https://arxiv.org/abs/2607.13563}
+}
+```

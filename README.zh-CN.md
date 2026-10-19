@@ -6,6 +6,12 @@
 
 本包只提供 **Exact 无损加速推理**。当前 Base 配方为顶点 EMA 100K、拓扑 EMA 10K、VAE EMA 30K，使用 MBR8、20 步和拓扑 CFG 3，接入 Sho Kuno 的 CUDA Graph 与 K/V 缓存实现。模型常驻两个隔离 worker，连续请求复用模型。
 
+## 与 Nexus 的技术关系
+
+MeshAxiom-Base 的几何生成流程基于 [Nexus: Native Mesh Generation with Diffusion](https://arxiv.org/abs/2607.13563)（Wang 等，2026）。继承的核心方法包括：顶点与拓扑分别生成的两阶段扩散框架、基于稀疏八叉树的层次化顶点生成、基于逐顶点连续表征的拓扑扩散，以及基于 Spacetime Interval 的网格连接关系重建。
+
+这些核心方法来自 Nexus，我们不将其作为 MeshAxiom 的原创方法。MeshAxiom 在此基础上提供基于论文的复现实现、Sho Kuno 贡献的 Exact 推理加速、面向 Agent 的文件与工具接口，以及资产检查、编辑、复用和场景拼装工作流。感谢 Nexus 作者的基础工作；完整引用见 [英文 README](README.md#relationship-to-nexus)。
+
 ## 安装与生成
 
 作者加速环境为 Linux、H200、NVIDIA PyTorch 25.03、CUDA 12.8、Python 3.12。建议使用独立环境；其他硬件和软件组合先做一致性验证。

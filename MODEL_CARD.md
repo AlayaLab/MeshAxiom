@@ -6,6 +6,12 @@ The single released recipe is vertex EMA 100K, topology EMA 10K, topology VAE EM
 30K. Inference uses Sho Kuno's Exact implementation with the same tensors,
 MBR8, 20 DPM++2M steps, and topology CFG 3. Material generation is independent.
 
+## Relationship to Nexus
+
+The geometry generation method follows [Nexus: Native Mesh Generation with Diffusion](https://arxiv.org/abs/2607.13563) (Wang et al., 2026): separate vertex and topology diffusion stages, hierarchical sparse-octree vertex generation, continuous per-vertex topology representations, and Spacetime Interval-based connectivity reconstruction. These core designs are credited to Nexus and are not claimed as original MeshAxiom methods.
+
+MeshAxiom supplies its paper-based reimplementation, Sho Kuno's Exact inference acceleration, agent/tool interfaces and downstream asset/scene workflows. See the [README attribution and citation](https://github.com/AlayaLab/MeshAxiom#relationship-to-nexus) for the technical relationship and bibliography.
+
 ## Checkpoint identities
 
 These are the final inference-only file identities, after metadata branding.

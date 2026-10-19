@@ -21,11 +21,32 @@ MeshAxiom connects compact, explicit 3D meshes to persistent asset records and p
 
 This is the official repository for the MeshAxiom model and workflow. The project website and interactive asset library are available now; Exact inference code is included below as a release candidate. Model weights are publicly available in the [MeshAxiom-Base repository on Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base); the paper and remaining workflow tools will follow.
 
+## Relationship to Nexus
+
+MeshAxiom-Base's geometry generation pipeline is based on [Nexus: Native Mesh Generation with Diffusion](https://arxiv.org/abs/2607.13563) (Wang et al., 2026). Our paper-based reimplementation follows the Nexus formulation in these core components:
+
+- Separate diffusion stages for vertex generation and topology generation.
+- Coarse-to-fine vertex generation using sparse octrees.
+- Diffusion over continuous per-vertex topology representations learned by a topology autoencoder.
+- Spacetime Interval-based reconstruction of mesh connectivity.
+
+These core methodological components originate in Nexus; we do not claim them as original contributions of MeshAxiom. MeshAxiom provides its paper-based reimplementation of this pipeline, the Exact inference acceleration contributed by Sho Kuno, file-based agent/tool interfaces, and downstream workflows for inspecting, editing, reusing and assembling generated assets. The geometry formulation should be distinguished from these implementation and system components. We thank the Nexus authors for this foundational work.
+
+```bibtex
+@article{wang2026nexus,
+  title={Nexus: Native Mesh Generation with Diffusion},
+  author={Wang, Hanxiao and Liu, Ying-Tian and Guo, Yuan-Chen and Feng, Qi-Yuan and Zou, Zi-Xin and Liang, Ding and Zhang, Biao and Cao, Yan-Pei},
+  journal={arXiv preprint arXiv:2607.13563},
+  year={2026},
+  url={https://arxiv.org/abs/2607.13563}
+}
+```
+
 ## Agent-Native 3D Authoring
 
 Agent-native describes the interface: agents call tools on asset files, receive compact summaries and rendered views, and retain geometry and generation recipes for later operations. Compact geometry and explicit triangle connectivity provide objects that geometric code and scene programs can read and edit.
 
-MeshAxiom-Base generates vertices coarse to fine with a diffusion transformer over a sparse octree, then predicts connectivity with a second diffusion transformer in the latent space of a topology autoencoder. The requested face budget conditions generation; realized counts can differ from the request.
+Following the Nexus formulation, MeshAxiom-Base generates vertices coarse to fine with a diffusion transformer over a sparse octree, then predicts connectivity with a second diffusion transformer in the latent space of a topology autoencoder. The requested face budget conditions generation; realized counts can differ from the request.
 
 ## From Meshes to Worlds
 
