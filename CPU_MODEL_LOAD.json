@@ -1,37 +1,13 @@
 {
   "status": "PASS",
-  "models": [
-    {
-      "kind": "vertex",
-      "status": "PASS",
-      "strict_state_keys": 955,
-      "every_loaded_tensor_equal": true,
-      "device": "cpu",
-      "forward_calls": 0,
-      "gpu_calls": 0,
-      "seconds": 37.0949134468101
-    },
-    {
-      "kind": "topology",
-      "status": "PASS",
-      "strict_state_keys": 830,
-      "every_loaded_tensor_equal": true,
-      "device": "cpu",
-      "forward_calls": 0,
-      "gpu_calls": 0,
-      "seconds": 33.01140995277092
-    },
-    {
-      "kind": "vae",
-      "status": "PASS",
-      "strict_state_keys": 343,
-      "every_loaded_tensor_equal": true,
-      "device": "cpu",
-      "forward_calls": 0,
-      "gpu_calls": 0,
-      "seconds": 11.152696118690073
-    }
-  ],
-  "cuda_inference_executed": false,
-  "network_model_downloads": false
+  "model": "MeshAxiom-Base",
+  "step": 100000,
+  "strict_state_keys": 829,
+  "all_loaded_tensors_exact": true,
+  "device": "cpu",
+  "forward_calls": 0,
+  "optimizer_included": false,
+  "conditioning": "image",
+  "condition_fusion": null,
+  "scope": "Fresh strict CPU load of the 100K vertex model; topology and VAE files are unchanged and were exercised in the accompanying GPU check."
 }

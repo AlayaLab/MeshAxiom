@@ -1,195 +1,246 @@
 {
-  "schema_version": 1,
-  "status": "CPU_TENSOR_AND_BOUNDED_GPU_IDENTITY_VALIDATED",
-  "prepared_utc": "2026-10-15T17:24:30.383358+00:00",
+  "status": "PASS",
   "model": "MeshAxiom-Base",
   "implementation": "exact",
-  "cpu_tests": {
-    "passed": 95,
-    "failed": 0,
-    "scope": "API, preprocessing, exports, separate materials, sampler CPU controls, normal Hub symlink caches, active-interpreter selection, real isolated worker startup, failure cleanup and file-descriptor leak regression"
+  "code_version": "0.2.0.dev2",
+  "recipe": {
+    "vertex_step": 100000,
+    "topology_step": 10000,
+    "vae_step": 30000,
+    "weights": "ema",
+    "vertex_conditioning": "image",
+    "vertex_condition_fusion": null
   },
-  "ema_tensors": {
-    "vertex": 955,
+  "tensor_counts": {
+    "vertex": 829,
     "topology": 830,
     "vae": 343,
-    "total": 2128,
-    "all_keys_shapes_dtypes_values_preserved": true,
-    "actual_models_cpu_strict_loaded": true,
-    "all_loaded_state_tensors_equal": true
+    "total": 2002
   },
-  "kernel_source_review": {
-    "files": 5,
-    "function_or_class_definitions": 77,
-    "AST_matches_delivered_math_and_control_flow_after_name_import_adaptation": true
+  "weights": {
+    "status": "PASS",
+    "model": "MeshAxiom-Base",
+    "implementation": "exact",
+    "files": [
+      {
+        "kind": "vertex",
+        "file": "weights/vertex-ema.pt",
+        "step": 100000,
+        "weights": "ema",
+        "tensor_count": 829,
+        "all_tensor_values_and_dtypes_equal": true,
+        "only_metadata_changes": [
+          "inference-only configuration; training paths omitted"
+        ],
+        "source_sha256": "d660061c7ea74a2e3f7fa5f60ef5671fcde13d0f5efd00c7e2fecb68db7b9544",
+        "sha256": "7743cc03ad05abcadab204b8a00f7d312ad2b26d7de1eb64ba009a75c12054f2",
+        "size": 9421814821
+      },
+      {
+        "kind": "topology",
+        "file": "weights/topology-ema.pt",
+        "step": 10000,
+        "weights": "ema",
+        "tensor_count": 830,
+        "all_tensor_values_and_dtypes_equal": true,
+        "only_metadata_changes": [
+          "v113.version"
+        ],
+        "source_sha256": "3818846563217c1d6819c8c9dbf7d8b8cc43b7a6cd2e96d6b37b576fe147ef45",
+        "sha256": "7fb0c7cc2035616f811326d3e64c1393de39d8f652ab7aa122ab84a987d2a19f",
+        "size": 9423507316
+      },
+      {
+        "kind": "vae",
+        "file": "weights/vae-ema.pt",
+        "step": 30000,
+        "weights": "ema",
+        "tensor_count": 343,
+        "all_tensor_values_and_dtypes_equal": true,
+        "only_metadata_changes": [],
+        "source_sha256": "7d6833425af71e923756d2ebdb2863e704857bffb8b365ab0c2f5ec3bfb6f4bd",
+        "sha256": "7d6833425af71e923756d2ebdb2863e704857bffb8b365ab0c2f5ec3bfb6f4bd",
+        "size": 446157647
+      }
+    ],
+    "scope": "All 829 vertex EMA tensors exactly match the evaluated 100K checkpoint; topology and VAE files retain their previous identities."
   },
-  "accelerated_gpu_inference_executed": true,
-  "integrated_four_file_gpu_identity_verified": true,
-  "new_latency_measurements": false,
-  "cold_docker_build_verified": false,
-  "runtime_checked": {
-    "python": "3.12",
-    "torch": "2.7.0a0+7c8ec84dab.nv25.3",
-    "transformers": "4.57.3",
-    "numpy": "1.26.4",
-    "Pillow": "12.0.0",
-    "torchvision": "0.22.0a0"
+  "cpu_tests": {
+    "status": "PASS",
+    "passed": 95
   },
-  "author_upstream_evidence": {
-    "exact_four_input_identity_reported": true,
-    "scope": "Author-delivered implementation; not a new acceptance of the renamed integration"
+  "cpu_vertex_load": {
+    "status": "PASS",
+    "model": "MeshAxiom-Base",
+    "step": 100000,
+    "strict_state_keys": 829,
+    "all_loaded_tensors_exact": true,
+    "device": "cpu",
+    "forward_calls": 0,
+    "optimizer_included": false,
+    "conditioning": "image",
+    "condition_fusion": null
   },
-  "public_license": "Pending authors release decision; third-party terms retained",
-  "code_version": "0.2.0.dev1",
+  "environment": {
+    "python": "3.12.3",
+    "torch": "2.7.0a0+7c8ec84dab.nv25.03",
+    "cuda_runtime": "12.8",
+    "packages": {
+      "transformers": "4.57.3",
+      "numpy": "1.26.4",
+      "trimesh": "4.10.1",
+      "huggingface-hub": "0.36.2"
+    }
+  },
   "gpu_identity": {
     "status": "PASS",
-    "gpu": "NVIDIA H200",
-    "input": "examples/reference.png",
+    "device": "NVIDIA H200",
     "input_sha256": "c1289d1201f221148aa7f36f902b5ab66dba4f5ff6ed4efa060f1a363f63d86d",
-    "face_budgets": [
+    "face_requests": [
       4000,
       8000
     ],
     "vertex_seed": 2026082301,
     "topology_seed": 1574365204,
-    "vertex_steps": 20,
-    "mbr_candidates": 8,
-    "background": "keep",
-    "model_revision": "9dc6e00bf60f54be8e10a64a802aa1b216c87197",
-    "resident_worker_reuse_verified_for_both_implementations": true,
-    "real_hub_symlink_cache_used": true,
-    "software_stack": {
-      "python": "3.12",
-      "torch": "2.7.0a0+7c8ec84dab.nv25.3",
-      "transformers": "4.57.3",
-      "numpy": "1.26.4",
-      "Pillow": "12.0.0",
-      "torchvision": "0.22.0a0"
-    },
-    "file_identity": {
+    "mbr": 8,
+    "steps": 20,
+    "comparisons": {
       "4000": {
-        "vertices.npz": {
-          "equal": true,
-          "size": 7581,
-          "sha256": "6e2be5c1ebc8fa4d2e40356bce328df5eaa8975c4f642c6e79901e4bd8fa3c71"
-        },
-        "topology.npz": {
-          "equal": true,
-          "size": 77709,
-          "sha256": "bc9562b9d66c8367b155c953fd27f8c1868464fa26dea79112770c49e8d22daf"
-        },
-        "mesh.obj": {
-          "equal": true,
-          "size": 162423,
-          "sha256": "8297c4170c0bc6f2b454f11faf8276a1e803a4c7fdacc48fa667baf7620f6c64"
-        },
-        "mesh.json": {
-          "equal": true,
-          "size": 374989,
-          "sha256": "623fe318189b1fc14b4aaf3af8ccc8aa6877f4256af449228c389eb5f0685101"
+        "status": "PASS",
+        "files": {
+          "vertices.npz": {
+            "equal": true,
+            "size": 7792,
+            "sha256": "53bc0533866a05d3ee771f519a7de292d4b3da0a1f09111bbb07b9432c8409fe"
+          },
+          "topology.npz": {
+            "equal": true,
+            "size": 79907,
+            "sha256": "17270c21e13a1b4e9bb5b712efe4bc2eaafcc3ed579968725e9e80edc99dec97"
+          },
+          "mesh.obj": {
+            "equal": true,
+            "size": 165722,
+            "sha256": "e94cfa2e57360ea3be7e081d5ad2dfc667aa4c5b82e67457f1472b11f49b1cc7"
+          },
+          "mesh.json": {
+            "equal": true,
+            "size": 382849,
+            "sha256": "07037c8a9998fedb30db46e827a040adf11894c9a75d3a4d5f1eddf23814b616"
+          }
         }
       },
       "8000": {
-        "vertices.npz": {
-          "equal": true,
-          "size": 14082,
-          "sha256": "45143c676df706e498e30c6b0c605d6c7a025d4be5bd29e63aa2839da604d09e"
-        },
-        "topology.npz": {
-          "equal": true,
-          "size": 158137,
-          "sha256": "a780c721bc49c3883669a713d05c9574e9ece298bc834059081f478eefee6e9f"
-        },
-        "mesh.obj": {
-          "equal": true,
-          "size": 323188,
-          "sha256": "9837e36812cebd660b6dace039ec3f893d9047834111d6d9580dbcdfa3b463d4"
-        },
-        "mesh.json": {
-          "equal": true,
-          "size": 738865,
-          "sha256": "30a58413db0534ad011c3a730f100676f39c8e71c811e5d41c1b297e3fffbb5f"
+        "status": "PASS",
+        "files": {
+          "vertices.npz": {
+            "equal": true,
+            "size": 16437,
+            "sha256": "2efd98849db5c0a7cd5b1992921edf522ac54b3d77e66e8aac9cb9257e1acc51"
+          },
+          "topology.npz": {
+            "equal": true,
+            "size": 178198,
+            "sha256": "6e9388958fa22dcaec299a1b2a224d0f34fd7de06ac3e2581fe1537f603600bf"
+          },
+          "mesh.obj": {
+            "equal": true,
+            "size": 364255,
+            "sha256": "956535fde710ae588bbfb744aa622c170665c4a697d5cca0811c31c91c69d5fc"
+          },
+          "mesh.json": {
+            "equal": true,
+            "size": 830713,
+            "sha256": "7182cdb4e044d21546223b01627f26e2f6ccf608318281b4441ddd747ecc236e"
+          }
         }
       }
     },
-    "checked_source_sha256": {
-      "src/meshaxiom/__init__.py": "20cbf1a9189f928684d9f9e18ac13db929b176c7826fdc070b3fd5303e4fa3d4",
-      "src/meshaxiom/cli.py": "6645a900758c56f4ba4a6275ecc2fea882082f1f92764482b5acaaa10278abbd",
-      "src/meshaxiom/config.py": "3f109a3a0be0a1270af05558e43a48f2152af5abd2e000040f964edec97e89e2",
-      "src/meshaxiom/contracts.py": "4f4a2fa13f806d5f8c8e8cd948c31022485d11a78816715ba55a80f3e6fc3c66",
-      "src/meshaxiom/hub.py": "1da549cb3a9acd8c1936fc243a05d8172e82df32d46a823bb3dba35595966fea",
-      "src/meshaxiom/material_backend/__init__.py": "3e7b48f127d6b6197bb29f92f6021b39b9ffa618e80ddfb19b8f34245471b870",
-      "src/meshaxiom/material_backend/alignment.py": "ddb7a238aa36fa02c008adc212155e04cd222be0ebeefc2a660c415d52678d57",
-      "src/meshaxiom/material_backend/geometry.py": "db1bf37640d55d1a69db7f69c63cf482bdc3e79938b0120fb9048c43dd2ead35",
-      "src/meshaxiom/material_backend/pixal.py": "2fa924f04360f387d8c35c5217ef356955b9773475e4acf75df5f0713e237f43",
-      "src/meshaxiom/material_backend/superresolution.py": "b5dca36ac4a0457eb67677ebebe8b5765a6fe44368b3452c4ae2effd1a848982",
-      "src/meshaxiom/pipeline.py": "e8a1f08d0b0d60bf70457f561bdbe3915af399e63f09ab5eac8e67d2d370b242",
-      "src/meshaxiom/preprocess.py": "d06b4c13680d7ae69d8da11429334cb2f612cc6a947af4bfa9b768f9c53c5475",
-      "src/meshaxiom/server.py": "4436c6c73911c0fe3f490c5d8562fcb452522ac20d4f41627db0bd824d1a47ce",
-      "src/meshaxiom/session.py": "9fa6f1ddf43f7d72088795f6f2a6d987f534c41734890a7342ef00b41c52a4fe",
-      "src/meshaxiom/tools.py": "3d6ca73c56a0fb63cdad3c837baa20445271f357d919abe4e2c1a3eb2f7b2167",
-      "src/meshaxiom/vendor/__init__.py": "3af1ed55a3edc1d6a309aee82426d0c31247a7395d441c35218115075c1101b4",
-      "src/meshaxiom/vendor/kuno/__init__.py": "bd4170391fcc9cece92cfe90c83d26badc816ec4e60266e47e79fff8e82c47b9",
-      "src/meshaxiom/vendor/kuno/p4_vertex_engine.py": "1016132a661f931bf5416a4017f7cc696a7cdb86cbd27324f7b4c8588c913f27",
-      "src/meshaxiom/vendor/kuno/p5_post_fast.py": "92890fabd628ea05e9a4028bcbb5ab53c64b143dc93eacaec3002f789d7f9aca",
-      "src/meshaxiom/vendor/kuno/p7_exact_backend.py": "1c61ddf6f651f2b27feebcbb7a4f27ee899993ace262d0cf6ab88da5e5ab2aa5",
-      "src/meshaxiom/vendor/kuno/topo_fast.py": "b5d610b636ac1e0b96f6d9d3384ffaec97d59c8f675da1ab2760e36f918febec",
-      "src/meshaxiom/vendor/kuno/vertex_engine.py": "a0c2fb8adf320248d9d97ab1e09a06764ee8bfab9fed5f6eabbeb806384467de",
-      "src/meshaxiom/vendor/recipe/__init__.py": "3af1ed55a3edc1d6a309aee82426d0c31247a7395d441c35218115075c1101b4",
-      "src/meshaxiom/vendor/recipe/decode_policy90.py": "3a0da4b826f3a359187d91af6d69e0cf202b5efbeb233ecbc855201d2b3c1937",
-      "src/meshaxiom/vendor/recipe/gen_mbr128.py": "188ad31d9462345e71f3ff39229963fba8eddcc6ed485d7b135dae7a223a92e0",
-      "src/meshaxiom/vendor/recipe/mesh_utils90.py": "e55d1fb6f9e8421d538e578348c6b8a13823b5993956dc73cdc104715d278aee",
-      "src/meshaxiom/vendor/recipe/model118rich.py": "313d35a90f32f669b63f43530df30cf4fdf94a97551b45cb6b4875d0f1e87cc1",
-      "src/meshaxiom/vendor/recipe/orient_faces.py": "90458f3c690429d378a7a35e9e6d87944f1be2011f14ef2c85462bfcdfc325de",
-      "src/meshaxiom/vendor/recipe/runtime.py": "bd9883857a020df31973b2df0d524d425d209527b5a5a2a881a2e34d8854a7ca",
-      "src/meshaxiom/vendor/superresolution/__init__.py": "e2dc2b39ea89853eda532f298472d68e2a549e2d9d84b01995fda4f31d0ea650",
-      "src/meshaxiom/vendor/superresolution/arch_util.py": "7032b86c5ef8f8d5c9b22af89ae8dbe32033500f4d8cc9c2e14e57a46d69fb86",
-      "src/meshaxiom/vendor/superresolution/rrdbnet_arch.py": "928d0a8367794ef1ebe32517b511b1ffdc3be366bfcbdece44136b6a3f9a5193",
-      "src/meshaxiom/vendor/topology/__init__.py": "3af1ed55a3edc1d6a309aee82426d0c31247a7395d441c35218115075c1101b4",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/config.py": "1381bda8e7594e0b54840be343864beea0077f166edaee2e190757a03ccc52e4",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/data/mesh_ops.py": "c5c66bed4d539b81464ec46f6bc4779a9d4b2ee56665389728c9aeb598b9d545",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/diffusion/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/diffusion/flow.py": "d833a8b34cf721a84fc4e7808d706699175c4a6cb02164a3d9921aa2406a22b6",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/models/condition.py": "d54f95d2ddc559e24820391514c3496c5dd848d2cd9d2c2f49798acec35b05b3",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/models/fps.py": "8eefa997216503b9f0c86a596eb5f21d1d0298cbc13c132f46ecc0b13f7ee707",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/models/layers.py": "be13fba0516a58858b82b233a9f28b0aae4f05b1caceef403d4ad57e20dabb41",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/models/octree_dit.py": "62ed57f74ccf504a5878deb60d26fd56740970230d817dd0f4bd52d8d2084941",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/models/topo_dit.py": "de5dba6ac0ec8e799c32053364ff31049d809e0fee844b2db58e647680edf2f3",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/models/topo_vae.py": "3dfc795bc1cf9c1387291fdb4035cf8c319f85ae1b64279bafa91855bfb53633",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/sample.py": "c50833dafbc93e37931427eae376b25da65b1b59093f8a46c38cafdd873909ca",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/topology/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/topology/spacetime.py": "441ec2b60f190057c4c0c1ad517a049eff1a1b91680b04b7f552146b5481df26",
-      "src/meshaxiom/vendor/topology/meshaxiom_core/topology/streamed_edges.py": "313eed389c488bf4845f06c07ad0f04e21183c47547f0becf57ab8d4f106fe68",
-      "src/meshaxiom/vendor/vertex/__init__.py": "3af1ed55a3edc1d6a309aee82426d0c31247a7395d441c35218115075c1101b4",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/config.py": "1381bda8e7594e0b54840be343864beea0077f166edaee2e190757a03ccc52e4",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/data/mesh_ops.py": "c5c66bed4d539b81464ec46f6bc4779a9d4b2ee56665389728c9aeb598b9d545",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/diffusion/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/diffusion/flow.py": "d833a8b34cf721a84fc4e7808d706699175c4a6cb02164a3d9921aa2406a22b6",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/models/condition.py": "ab95c04d13a82de6a7334ae8bf5e42bbc58d1afb1c8c94f94e8864b2e40574be",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/models/fps.py": "70a0005a1b3ca0f8e1f768eeffabcefcab1f8cd05bf888c515709167b3485b21",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/models/fps_fast153.py": "002154485f0442311db110a2eadf6a2328d6bdf11be7e2e68f78b95084f309b6",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/models/layers.py": "cedc1ea3e048394c5568ee06d991ea8066f4687790f18aff6da3681771123680",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/models/octree_dit.py": "b8397cd291a9f323542b5fa52646365a447139491b98391879c8da8811bd27d9",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/models/posenc182.py": "28f7b375bcc2c9f855476f6d44298504d5fc5e8b3b28239dc2a739f9a7be9638",
-      "src/meshaxiom/vendor/vertex/meshaxiom_core/sample.py": "315f6881b51cafb32e0c851fb837627ce7661692169722d3426c2cefc68c4e84",
-      "src/meshaxiom/verification.py": "260f0baaa7eed584fb1e68e7f5857738f01688e2f0927c98158b589391bc6856",
-      "src/meshaxiom/workers/__init__.py": "d2e0cdc3af9ad149d72b6e554af62434d04fc3dbfc6531572e3c3b2b6a6fcf6a",
-      "src/meshaxiom/workers/_geometry_state.py": "2692d8f1de4424e940a043eb82553d4951158963ac626912cfd61260989d6f33",
-      "src/meshaxiom/workers/material.py": "65e11f200d48fc09d8f34039d784efebb0b94421fb15abf8e6ba55e540a1fa10",
-      "src/meshaxiom/workers/offline_encoder.py": "07f872b5f818955ac413ec7e0789f043f9369fbcd658f7faa69e2c6bde47219a",
-      "src/meshaxiom/workers/reference_topology.py": "0001650277dce2c860d4b5e28dd10a2f777e0efa75ff7ed3b1ba4c69258d5749",
-      "src/meshaxiom/workers/reference_vertex.py": "6db1f34d7838a2be2ceef977b944c72289e51304fd1c4f979c1d532df10b5e9a",
-      "src/meshaxiom/workers/resident.py": "68d2f995bab4cf464e728a1cc2cae9227d5b6a707d2d752f0b719ac611135cf2",
-      "src/meshaxiom/workers/superresolution.py": "503b147de49283df210cadacf4b905226ef9af57e3e5ba85803e14644faf4c34",
-      "src/meshaxiom/workers/topology.py": "607f8e64c9b2b3c6898465dc722b4c60ca51e8795930ea97a53bce2584e5c837",
-      "src/meshaxiom/workers/vertex.py": "3015624fb50b5b14f6cb9263df4ed5fde821356d748dba607a482e0655210028"
-    },
-    "scope": "One image at two face requests on this GPU/software stack with these seeds and weights; not a universal identity or performance claim"
-  }
+    "resident_workers_reused": true,
+    "all_own_workers_exited": true,
+    "scope": "One prepared image, two face requests, fixed seeds and this software stack; no current-checkpoint speed benchmark."
+  },
+  "source_sha256": {
+    "src/meshaxiom/__init__.py": "1e2ea7cc8d2dd06013f1e1c1fa676694c8ec0aafa41e21a84fae7ab7ba0b3e54",
+    "src/meshaxiom/cli.py": "6645a900758c56f4ba4a6275ecc2fea882082f1f92764482b5acaaa10278abbd",
+    "src/meshaxiom/config.py": "775beca8b412e0c4e261c660e567951a4537eae9e9b980cac4882ac43afaf74d",
+    "src/meshaxiom/contracts.py": "4f4a2fa13f806d5f8c8e8cd948c31022485d11a78816715ba55a80f3e6fc3c66",
+    "src/meshaxiom/hub.py": "79204b01b6dd12699d751079ae26493c714b486942ffd3e077d35b7c2f032652",
+    "src/meshaxiom/material_backend/__init__.py": "3e7b48f127d6b6197bb29f92f6021b39b9ffa618e80ddfb19b8f34245471b870",
+    "src/meshaxiom/material_backend/alignment.py": "ddb7a238aa36fa02c008adc212155e04cd222be0ebeefc2a660c415d52678d57",
+    "src/meshaxiom/material_backend/geometry.py": "db1bf37640d55d1a69db7f69c63cf482bdc3e79938b0120fb9048c43dd2ead35",
+    "src/meshaxiom/material_backend/pixal.py": "2fa924f04360f387d8c35c5217ef356955b9773475e4acf75df5f0713e237f43",
+    "src/meshaxiom/material_backend/superresolution.py": "b5dca36ac4a0457eb67677ebebe8b5765a6fe44368b3452c4ae2effd1a848982",
+    "src/meshaxiom/pipeline.py": "e8a1f08d0b0d60bf70457f561bdbe3915af399e63f09ab5eac8e67d2d370b242",
+    "src/meshaxiom/preprocess.py": "d06b4c13680d7ae69d8da11429334cb2f612cc6a947af4bfa9b768f9c53c5475",
+    "src/meshaxiom/server.py": "4436c6c73911c0fe3f490c5d8562fcb452522ac20d4f41627db0bd824d1a47ce",
+    "src/meshaxiom/session.py": "9fa6f1ddf43f7d72088795f6f2a6d987f534c41734890a7342ef00b41c52a4fe",
+    "src/meshaxiom/tools.py": "3d6ca73c56a0fb63cdad3c837baa20445271f357d919abe4e2c1a3eb2f7b2167",
+    "src/meshaxiom/vendor/__init__.py": "3af1ed55a3edc1d6a309aee82426d0c31247a7395d441c35218115075c1101b4",
+    "src/meshaxiom/vendor/kuno/__init__.py": "bd4170391fcc9cece92cfe90c83d26badc816ec4e60266e47e79fff8e82c47b9",
+    "src/meshaxiom/vendor/kuno/p4_vertex_engine.py": "1016132a661f931bf5416a4017f7cc696a7cdb86cbd27324f7b4c8588c913f27",
+    "src/meshaxiom/vendor/kuno/p5_post_fast.py": "92890fabd628ea05e9a4028bcbb5ab53c64b143dc93eacaec3002f789d7f9aca",
+    "src/meshaxiom/vendor/kuno/p7_exact_backend.py": "1c61ddf6f651f2b27feebcbb7a4f27ee899993ace262d0cf6ab88da5e5ab2aa5",
+    "src/meshaxiom/vendor/kuno/topo_fast.py": "b5d610b636ac1e0b96f6d9d3384ffaec97d59c8f675da1ab2760e36f918febec",
+    "src/meshaxiom/vendor/kuno/vertex_engine.py": "a0c2fb8adf320248d9d97ab1e09a06764ee8bfab9fed5f6eabbeb806384467de",
+    "src/meshaxiom/vendor/recipe/__init__.py": "3af1ed55a3edc1d6a309aee82426d0c31247a7395d441c35218115075c1101b4",
+    "src/meshaxiom/vendor/recipe/decode_policy90.py": "3a0da4b826f3a359187d91af6d69e0cf202b5efbeb233ecbc855201d2b3c1937",
+    "src/meshaxiom/vendor/recipe/gen_mbr128.py": "188ad31d9462345e71f3ff39229963fba8eddcc6ed485d7b135dae7a223a92e0",
+    "src/meshaxiom/vendor/recipe/mesh_utils90.py": "e55d1fb6f9e8421d538e578348c6b8a13823b5993956dc73cdc104715d278aee",
+    "src/meshaxiom/vendor/recipe/model118rich.py": "313d35a90f32f669b63f43530df30cf4fdf94a97551b45cb6b4875d0f1e87cc1",
+    "src/meshaxiom/vendor/recipe/orient_faces.py": "90458f3c690429d378a7a35e9e6d87944f1be2011f14ef2c85462bfcdfc325de",
+    "src/meshaxiom/vendor/recipe/runtime.py": "bd9883857a020df31973b2df0d524d425d209527b5a5a2a881a2e34d8854a7ca",
+    "src/meshaxiom/vendor/superresolution/__init__.py": "e2dc2b39ea89853eda532f298472d68e2a549e2d9d84b01995fda4f31d0ea650",
+    "src/meshaxiom/vendor/superresolution/arch_util.py": "7032b86c5ef8f8d5c9b22af89ae8dbe32033500f4d8cc9c2e14e57a46d69fb86",
+    "src/meshaxiom/vendor/superresolution/rrdbnet_arch.py": "928d0a8367794ef1ebe32517b511b1ffdc3be366bfcbdece44136b6a3f9a5193",
+    "src/meshaxiom/vendor/topology/__init__.py": "3af1ed55a3edc1d6a309aee82426d0c31247a7395d441c35218115075c1101b4",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/config.py": "1381bda8e7594e0b54840be343864beea0077f166edaee2e190757a03ccc52e4",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/data/mesh_ops.py": "c5c66bed4d539b81464ec46f6bc4779a9d4b2ee56665389728c9aeb598b9d545",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/diffusion/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/diffusion/flow.py": "d833a8b34cf721a84fc4e7808d706699175c4a6cb02164a3d9921aa2406a22b6",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/models/condition.py": "d54f95d2ddc559e24820391514c3496c5dd848d2cd9d2c2f49798acec35b05b3",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/models/fps.py": "8eefa997216503b9f0c86a596eb5f21d1d0298cbc13c132f46ecc0b13f7ee707",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/models/layers.py": "be13fba0516a58858b82b233a9f28b0aae4f05b1caceef403d4ad57e20dabb41",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/models/octree_dit.py": "62ed57f74ccf504a5878deb60d26fd56740970230d817dd0f4bd52d8d2084941",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/models/topo_dit.py": "de5dba6ac0ec8e799c32053364ff31049d809e0fee844b2db58e647680edf2f3",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/models/topo_vae.py": "3dfc795bc1cf9c1387291fdb4035cf8c319f85ae1b64279bafa91855bfb53633",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/sample.py": "c50833dafbc93e37931427eae376b25da65b1b59093f8a46c38cafdd873909ca",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/topology/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/topology/spacetime.py": "441ec2b60f190057c4c0c1ad517a049eff1a1b91680b04b7f552146b5481df26",
+    "src/meshaxiom/vendor/topology/meshaxiom_core/topology/streamed_edges.py": "313eed389c488bf4845f06c07ad0f04e21183c47547f0becf57ab8d4f106fe68",
+    "src/meshaxiom/vendor/vertex/__init__.py": "3af1ed55a3edc1d6a309aee82426d0c31247a7395d441c35218115075c1101b4",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/config.py": "1381bda8e7594e0b54840be343864beea0077f166edaee2e190757a03ccc52e4",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/data/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/data/mesh_ops.py": "c5c66bed4d539b81464ec46f6bc4779a9d4b2ee56665389728c9aeb598b9d545",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/diffusion/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/diffusion/flow.py": "d833a8b34cf721a84fc4e7808d706699175c4a6cb02164a3d9921aa2406a22b6",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/models/condition.py": "ab95c04d13a82de6a7334ae8bf5e42bbc58d1afb1c8c94f94e8864b2e40574be",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/models/fps.py": "70a0005a1b3ca0f8e1f768eeffabcefcab1f8cd05bf888c515709167b3485b21",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/models/fps_fast153.py": "002154485f0442311db110a2eadf6a2328d6bdf11be7e2e68f78b95084f309b6",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/models/layers.py": "cedc1ea3e048394c5568ee06d991ea8066f4687790f18aff6da3681771123680",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/models/octree_dit.py": "b8397cd291a9f323542b5fa52646365a447139491b98391879c8da8811bd27d9",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/models/posenc182.py": "28f7b375bcc2c9f855476f6d44298504d5fc5e8b3b28239dc2a739f9a7be9638",
+    "src/meshaxiom/vendor/vertex/meshaxiom_core/sample.py": "315f6881b51cafb32e0c851fb837627ce7661692169722d3426c2cefc68c4e84",
+    "src/meshaxiom/verification.py": "260f0baaa7eed584fb1e68e7f5857738f01688e2f0927c98158b589391bc6856",
+    "src/meshaxiom/workers/__init__.py": "d2e0cdc3af9ad149d72b6e554af62434d04fc3dbfc6531572e3c3b2b6a6fcf6a",
+    "src/meshaxiom/workers/_geometry_state.py": "a3c700ebc1ffd282d109fa454cee075304649cd23877b1388a5ae7fc778c2978",
+    "src/meshaxiom/workers/material.py": "65e11f200d48fc09d8f34039d784efebb0b94421fb15abf8e6ba55e540a1fa10",
+    "src/meshaxiom/workers/offline_encoder.py": "07f872b5f818955ac413ec7e0789f043f9369fbcd658f7faa69e2c6bde47219a",
+    "src/meshaxiom/workers/reference_topology.py": "0001650277dce2c860d4b5e28dd10a2f777e0efa75ff7ed3b1ba4c69258d5749",
+    "src/meshaxiom/workers/reference_vertex.py": "6db1f34d7838a2be2ceef977b944c72289e51304fd1c4f979c1d532df10b5e9a",
+    "src/meshaxiom/workers/resident.py": "68d2f995bab4cf464e728a1cc2cae9227d5b6a707d2d752f0b719ac611135cf2",
+    "src/meshaxiom/workers/superresolution.py": "503b147de49283df210cadacf4b905226ef9af57e3e5ba85803e14644faf4c34",
+    "src/meshaxiom/workers/topology.py": "607f8e64c9b2b3c6898465dc722b4c60ca51e8795930ea97a53bce2584e5c837",
+    "src/meshaxiom/workers/vertex.py": "3015624fb50b5b14f6cb9263df4ed5fde821356d748dba607a482e0655210028"
+  },
+  "notes": [
+    "Topology and VAE files are unchanged from the prior release.",
+    "Earlier 180K paper and speed measurements do not measure the current 100K vertex weights.",
+    "Cold Docker build and other GPU stacks require target verification."
+  ]
 }

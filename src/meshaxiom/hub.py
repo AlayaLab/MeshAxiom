@@ -6,8 +6,8 @@ import re
 from .contracts import MeshAxiomError
 
 EXPECTED_WEIGHTS = {
-    "vertex_checkpoint": {"file": "vertex-ema.pt", "step": 180000, "weights": "ema", "size": 11235479045,
-                          "sha256": "4d60148fdddb65df502becbf9786131836a880fdba226180ce586a8ee10620fb"},
+    "vertex_checkpoint": {"file": "vertex-ema.pt", "step": 100000, "weights": "ema", "size": 9421814821,
+                          "sha256": "7743cc03ad05abcadab204b8a00f7d312ad2b26d7de1eb64ba009a75c12054f2"},
     "topology_checkpoint": {"file": "topology-ema.pt", "step": 10000, "weights": "ema", "size": 9423507316,
                             "sha256": "7fb0c7cc2035616f811326d3e64c1393de39d8f652ab7aa122ab84a987d2a19f"},
     "vae_checkpoint": {"file": "vae-ema.pt", "step": 30000, "weights": "ema", "size": 446157647,

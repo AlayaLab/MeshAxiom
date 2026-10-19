@@ -2,7 +2,7 @@
 
 MeshAxiom: An Agent-Native 3D Foundation Stack for Programmable Worlds.
 
-The single released recipe is vertex EMA 180K, topology EMA 10K, topology VAE EMA
+The single released recipe is vertex EMA 100K, topology EMA 10K, topology VAE EMA
 30K. Inference uses Sho Kuno's Exact implementation with the same tensors,
 MBR8, 20 DPM++2M steps, and topology CFG 3. Material generation is independent.
 
@@ -13,13 +13,13 @@ They exclude optimizer, raw non-EMA model weights, training RNG and training dat
 
 | Component | Step | Tensors | Bytes | SHA256 |
 | --- | ---: | ---: | ---: | --- |
-| Vertex | 180000 | 955 | 11235479045 | `4d60148fdddb65df502becbf9786131836a880fdba226180ce586a8ee10620fb` |
+| Vertex | 100000 | 829 | 9421814821 | `7743cc03ad05abcadab204b8a00f7d312ad2b26d7de1eb64ba009a75c12054f2` |
 | Topology | 10000 | 830 | 9423507316 | `7fb0c7cc2035616f811326d3e64c1393de39d8f652ab7aa122ab84a987d2a19f` |
 | Vae | 30000 | 343 | 446157647 | `7d6833425af71e923756d2ebdb2863e704857bffb8b365ab0c2f5ec3bfb6f4bd` |
 
-All 2,128 EMA tensors retain their original keys, dtypes, shapes and exact values.
-The topology export changes only the `v113.version` product label; the vertex and
-VAE exports are byte-unchanged. The complete readback receipt is
+All 2,002 EMA tensors retain their original keys, dtypes, shapes and exact values.
+The 100K vertex export removes training-only metadata. Topology and VAE files
+keep their previously verified identities. The complete readback receipt is
 [WEIGHTS.json](deploy/huggingface/model/WEIGHTS.json).
 
 ## Input and output
@@ -46,12 +46,13 @@ uses separately acquired RealESRGAN weights. See [materials](docs/MATERIALS.md).
 ## Validation and release status
 
 [VALIDATION.json](VALIDATION.json) records 95 passing CPU tests and one-image H200 reference/Exact identity at 4K and 8K requests, including resident worker reuse.
-The author's original Exact identity and timing evidence does not establish
+Earlier timing and paper results used the previous 180K vertex checkpoint and
+are not measurements of this 100K release. Exact identity does not establish
 identity on every GPU, stack or input. The bundled `verify-exact` command compares
 the newly branded reference against Exact on the target machine.
 
 The [MeshAxiom-Base model repository](https://huggingface.co/AlayaLab/MeshAxiom-Base)
-is public. The verified model revision is
-`b80240ce4f77a28bc4debdcca895e96c78ddb294`. The authors' code/weight license
+currently requires access. The verified model revision is
+`25a6250fc88e2438e5a666ad8622c3475f64e6b0`. The authors' code/weight license
 assignment remains pending. An interactive
 Space is not hosted yet.

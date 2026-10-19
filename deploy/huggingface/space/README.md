@@ -19,7 +19,7 @@ model directory and set `MESHAXIOM_MODEL_DIR`.
 Use `HF_TOKEN` as a Space secret when access is required. It is read from the
 environment only. The container does not embed credentials or weights.
 
-Version `0.2.0.dev1` passed one-image reference/Exact identity at 4K and 8K requests on H200 with NVIDIA PyTorch 25.03, including resident worker reuse. Other hardware and a cold Docker build still require target validation. Model
+Version `0.2.0.dev2` passed one-image reference/Exact identity at 4K and 8K requests on H200 with NVIDIA PyTorch 25.03, including resident worker reuse. Other hardware and a cold Docker build still require target validation. Model
 loading, image preparation and first-use graph capture add to interactive latency.
 The two stage workers retain their models between requests; one request runs at a
 time. Restarting the Space releases its worker processes.

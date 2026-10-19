@@ -1,5 +1,5 @@
 """MeshAxiom's lightweight Python interface. GPU libraries load in workers."""
-__version__ = "0.2.0.dev1"
+__version__ = "0.2.0.dev2"
 
 def __getattr__(name):
     if name == "MeshAxiomPipeline":

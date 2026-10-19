@@ -5,7 +5,7 @@
   "model": "MeshAxiom-Base",
   "implementation": "exact",
   "configuration": "meshaxiom.json",
-  "vertex_step": 180000,
+  "vertex_step": 100000,
   "topology_step": 10000,
   "vae_step": 30000,
   "ema_only": true,

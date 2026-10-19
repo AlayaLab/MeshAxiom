@@ -12,20 +12,20 @@ To stage from the original accepted EMA exports without changing their values:
 python scripts/prepare_model.py --weights-dir /path/to/accepted-ema-weights --output /path/to/new-model-directory
 ```
 
-`--link` is available on the same filesystem for the two byte-unchanged files.
-The topology file gets the new product name in one metadata field; every tensor,
-dtype, key, configuration and non-brand metadata value is checked on readback.
-The staging receipt and `SHA256SUMS` belong with the model payload. SHA256 binds
-file content, so the renamed topology archive has its own checksum.
+`--link` is available on the same filesystem for the accepted files. All three
+already branded EMA files are copied or linked without changing their bytes.
+Every tensor, dtype, key and metadata value is checked on readback. The staging
+receipt and `SHA256SUMS` belong with the model payload.
 
-The public model repository is `AlayaLab/MeshAxiom-Base`. Its verified model
-revision is `b80240ce4f77a28bc4debdcca895e96c78ddb294`. Consumers can use:
+The model repository is `AlayaLab/MeshAxiom-Base` and currently requires access.
+Authenticate with an authorized account before downloading. Its verified model
+revision is `25a6250fc88e2438e5a666ad8622c3475f64e6b0`. Consumers can use:
 
 ```python
 from meshaxiom import MeshAxiomPipeline
 pipeline = MeshAxiomPipeline.from_pretrained(
     "AlayaLab/MeshAxiom-Base",
-    revision="b80240ce4f77a28bc4debdcca895e96c78ddb294",
+    revision="25a6250fc88e2438e5a666ad8622c3475f64e6b0",
 )
 ```
 
@@ -42,12 +42,12 @@ and retain the source tree and application path, then set:
 - `HF_TOKEN` as a Space secret if model access requires it.
 
 The app loads lazily, keeps both stage workers resident, serializes requests and
-provides mesh downloads. Version `0.2.0.dev1` also passed a bounded H200 identity check using one image at 4K and 8K requests, including resident worker reuse. Choose GPU memory only after a target canary; an arbitrary
+provides mesh downloads. Version `0.2.0.dev2` also passed a bounded H200 identity check using one image at 4K and 8K requests, including resident worker reuse. Choose GPU memory only after a target canary; an arbitrary
 small GPU is not assumed sufficient. Run `doctor` and `verify-exact` before serving.
 See [Docker Spaces](https://huggingface.co/docs/hub/spaces-sdks-docker) for the
 container port and runtime hardware requirements.
 
-The code and model weights are public; the Docker Space remains a deployment
-template. The staging scripts do not upload or create a Space. The authors'
+The code is public; the model repository currently requires access. The Docker
+Space remains a deployment template. The staging scripts do not upload or create a Space. The authors'
 license assignment and validation scope are tracked in
 `docs/RELEASE_PREPARATION.md`.

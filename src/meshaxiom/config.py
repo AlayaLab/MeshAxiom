@@ -12,7 +12,7 @@ from pathlib import Path
 from .contracts import MeshAxiomError, file_binding
 
 _VERIFIED = {}
-_GEOMETRY_STEPS = {"vertex_checkpoint": 180000, "topology_checkpoint": 10000, "vae_checkpoint": 30000}
+_GEOMETRY_STEPS = {"vertex_checkpoint": 100000, "topology_checkpoint": 10000, "vae_checkpoint": 30000}
 
 def load_config(value):
     if isinstance(value, dict):

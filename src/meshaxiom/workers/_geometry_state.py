@@ -40,8 +40,8 @@ def load(request, stage, *, exact=True):
         from meshaxiom_core.models.octree_dit import VertexModel
         ck, artifact = checkpoint(request["config"]["geometry"]["vertex_checkpoint"], "vertex")
         cfg = Cfg(ck["cfg"])
-        if cfg.get_path("condition.fusion") != "concat" or cfg.get_path("depth") != 9:
-            raise ValueError("Released vertex model requires D9 and concat conditioning")
+        if cfg.get_path("condition.type") != "image" or cfg.get_path("condition.fusion") is not None or cfg.get_path("depth") != 9:
+            raise ValueError("Released vertex model requires D9 and image conditioning")
         # Match the original worker: override local processor/model before construction.
         image_pixels(cfg, request)
         with offline_encoder(request["config"]["geometry"]["image_model"]):

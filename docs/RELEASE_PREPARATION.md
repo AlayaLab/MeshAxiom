@@ -1,20 +1,20 @@
 # Release status
 
 MeshAxiom Exact inference code is available on GitHub and the Base model weights
-are public on [Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base).
-The optional Docker Space remains a deployment template. All public generation interfaces
+are hosted on [Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base).
+The model repository currently requires access. The optional Docker Space remains a deployment template. All public generation interfaces
 use Exact. Internal naming and the topology metadata label have been migrated to
 MeshAxiom. The private preparation record retains the original source mappings.
 
-The release includes one EMA recipe: vertex 180K, topology 10K and VAE 30K.
+The release includes one EMA recipe: vertex 100K, topology 10K and VAE 30K.
 Training checkpoints, optimizer state and training data are excluded from the
 source repository. The separate model payload contains only the accepted EMA
 checkpoints and required metadata. Material and
 texture enhancement interfaces remain independent.
 
-The verified model revision is `b80240ce4f77a28bc4debdcca895e96c78ddb294`.
+The verified model revision is `25a6250fc88e2438e5a666ad8622c3475f64e6b0`.
 The authors' code/weight license assignment (including the acceleration
-contribution) remains pending. Version `0.2.0.dev1` passes 95 CPU tests and a bounded H200 reference/Exact identity check: one image at 4K and 8K, four identical geometry files per request, and resident worker reuse. Public availability
+contribution) remains pending. Version `0.2.0.dev2` passes 95 CPU tests and a bounded H200 reference/Exact identity check: one image at 4K and 8K, four identical geometry files per request, and resident worker reuse. Repository availability
 does not assign a new license; the embedded DINOv3 and other third-party terms
 still apply. `VALIDATION.json` records the checks performed on this integrated
 candidate. A hosted Space and a successful cold Docker build are not claimed.

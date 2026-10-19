@@ -4,7 +4,7 @@
     {
       "type": "function",
       "name": "generate_mesh",
-      "description": "Generate a native triangle mesh from an image using the 180K geometry recipe.",
+      "description": "Generate a native triangle mesh from an image using the 100K geometry recipe.",
       "parameters": {
         "type": "object",
         "properties": {

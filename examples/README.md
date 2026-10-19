@@ -4,10 +4,10 @@
 512×512 background. Use `background: "keep"` so no matting or crop changes its
 pixels. It is a finite illustration, not a benchmark or training-data example.
 
-After configuring the verified 180K weights and the external material models:
+After configuring the verified 100K weights and the external material models:
 
 ```bash
-meshaxiom run-tool --config configs/library-180k.json --request examples/generate.json
+meshaxiom run-tool --config configs/base.json --request examples/generate.json
 meshaxiom run-tool --config configs/material.json --request examples/texture.json
 meshaxiom run-tool --config configs/material.json --request examples/enhance.json
 ```

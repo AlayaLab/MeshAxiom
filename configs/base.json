@@ -3,8 +3,8 @@
   "geometry": {
     "vertex_checkpoint": {
       "path": "../models/MeshAxiom-Base/weights/vertex-ema.pt",
-      "sha256": "4d60148fdddb65df502becbf9786131836a880fdba226180ce586a8ee10620fb",
-      "step": 180000,
+      "sha256": "7743cc03ad05abcadab204b8a00f7d312ad2b26d7de1eb64ba009a75c12054f2",
+      "step": 100000,
       "weights": "ema"
     },
     "topology_checkpoint": {

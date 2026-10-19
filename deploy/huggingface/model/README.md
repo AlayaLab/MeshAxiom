@@ -18,22 +18,28 @@ language:
 
 [Project](https://alaya-lab.github.io/MeshAxiom/) · [Code](https://github.com/AlayaLab/MeshAxiom)
 
-Public Base weights for **Exact** image-to-native-mesh inference. This repository
-contains vertex EMA 180K, topology EMA 10K and topology VAE EMA 30K. Install the
+Base weights for **Exact** image-to-native-mesh inference. This repository
+contains vertex EMA 100K, topology EMA 10K and topology VAE EMA 30K. Install the
 MeshAxiom source package for the Python API, CLI and agent tools. No optimizer,
 training data or alternative inference preset is included.
 
 ```python
+from huggingface_hub import HfApi
 from meshaxiom import MeshAxiomPipeline
+
+# Resolve once, then reuse this immutable revision for reproducible runs.
+revision = HfApi().model_info("AlayaLab/MeshAxiom-Base").sha
 
 with MeshAxiomPipeline.from_pretrained(
     "AlayaLab/MeshAxiom-Base",
-    revision="859a522c77e25770619f16e89a57447a0bb9bc16",
+    revision=revision,
 ) as model:
     result = model.generate("image.png", "outputs/object", face_budget=4000)
 ```
 
-The pinned revision is the weight-identity baseline; current validation is recorded in this repository's latest `VALIDATION.json`. Install MeshAxiom code version `0.2.0.dev1` or later for the Hub-cache and worker-startup fixes. A local model directory
+Install MeshAxiom code version `0.2.0.dev2` for this 100K checkpoint; older
+versions expect different weights. Authenticate with an authorized Hugging Face
+account while this repository requires access. A local model directory
 can also be used. This repository supplies model data; the source package supplies
 the inference implementation. `model_index.json` is descriptive metadata, not a
 Diffusers pipeline.
@@ -45,14 +51,17 @@ files include a transform into glTF's Y-up frame.
 
 ## Verification and limitations
 
-All 2,128 EMA tensors were preserved and the three models loaded strictly on CPU.
-Version `0.2.0.dev1` passes 95 CPU tests. Uploaded weight hashes and authenticated sample byte ranges
-match the verified local files. See `WEIGHTS.json`, `VALIDATION.json` and
-`SHA256SUMS` for the recorded model identities and validation scope.
+All 829 vertex EMA tensors exactly match the evaluated 100K checkpoint. The
+unchanged topology and VAE files contain another 1,173 tensors. The vertex model
+loaded strictly on CPU and both geometry stages passed the GPU check below.
+Version `0.2.0.dev2` passes 95 CPU tests. See `WEIGHTS.json`, `VALIDATION.json`
+and `SHA256SUMS` for model identities and the scope of verification.
 
 Sho Kuno contributed the Exact acceleration. His tested platform is H200 with
 NVIDIA PyTorch 25.03. This integrated release also passed a bounded H200 check: one image at 4K and 8K requests, with all four geometry files identical to the reference and resident workers reused between requests. This covers only the recorded inputs, seeds, weights and stack. A cold Docker build remains unverified; run `meshaxiom verify-exact` on your target setup.
-Geometry can have open boundaries or degenerate faces.
+Geometry can have open boundaries or degenerate faces. Earlier paper results and
+speed measurements used the previous 180K vertex checkpoint; they are not
+measurements of this 100K release.
 
 ## License
 

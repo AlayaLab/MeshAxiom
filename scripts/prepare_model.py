@@ -15,11 +15,11 @@ from pathlib import Path
 import shutil
 
 SOURCE_SHA = {
-    "vertex": "4d60148fdddb65df502becbf9786131836a880fdba226180ce586a8ee10620fb",
-    "topology": "3818846563217c1d6819c8c9dbf7d8b8cc43b7a6cd2e96d6b37b576fe147ef45",
+    "vertex": "7743cc03ad05abcadab204b8a00f7d312ad2b26d7de1eb64ba009a75c12054f2",
+    "topology": "7fb0c7cc2035616f811326d3e64c1393de39d8f652ab7aa122ab84a987d2a19f",
     "vae": "7d6833425af71e923756d2ebdb2863e704857bffb8b365ab0c2f5ec3bfb6f4bd",
 }
-STEPS = {"vertex": 180000, "topology": 10000, "vae": 30000}
+STEPS = {"vertex": 100000, "topology": 10000, "vae": 30000}
 
 
 def digest(path):
@@ -58,7 +58,7 @@ def prepare(weights, output, *, link=False):
             raise ValueError("EMA metadata mismatch: " + kind)
         destination = output / "weights" / source.name
         metadata_paths = []
-        if kind == "topology":
+        if kind == "topology" and before.get("v113", {}).get("version") != "meshaxiom-topology-richknn-v118":
             after = dict(before)
             after["v113"] = dict(before["v113"], version="meshaxiom-topology-richknn-v118")
             torch.save(after, destination)
@@ -69,7 +69,7 @@ def prepare(weights, output, *, link=False):
             shutil.copyfile(source, destination)
         loaded = torch.load(destination, map_location="cpu", mmap=True, weights_only=True)
         comparison = dict(loaded)
-        if kind == "topology":
+        if metadata_paths:
             comparison["v113"] = dict(loaded["v113"], version=before["v113"]["version"])
         if not tensor_equal(before, comparison, torch):
             raise ValueError("A tensor or non-brand metadata value changed: " + kind)
@@ -95,6 +95,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--weights-dir", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--link", action="store_true", help="Use hard links for the two unchanged files on the same filesystem")
+    parser.add_argument("--link", action="store_true", help="Use hard links for the unchanged files on the same filesystem")
     args = parser.parse_args()
     print(json.dumps(prepare(args.weights_dir, args.output, link=args.link), indent=2))
