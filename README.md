@@ -21,10 +21,6 @@ MeshAxiom connects compact, explicit 3D meshes to persistent asset records and p
 
 This is the official repository for the MeshAxiom model and workflow. The project website and interactive asset library are available now; Exact inference code is included below as a release candidate. Model weights are publicly available in the [MeshAxiom-Base repository on Hugging Face](https://huggingface.co/AlayaLab/MeshAxiom-Base); the paper and remaining workflow tools will follow.
 
-## Relationship to Nexus
-
-MeshAxiom-Base's geometry pipeline is a paper-based reimplementation of the two-stage vertex and topology diffusion framework in [Nexus](https://arxiv.org/abs/2607.13563). MeshAxiom builds on this foundation with Exact inference acceleration, agent/tool interfaces, and downstream 3D workflows. We thank the Nexus authors for their foundational work.
-
 ## Agent-Native 3D Authoring
 
 Agent-native describes the interface: agents call tools on asset files, receive compact summaries and rendered views, and retain geometry and generation recipes for later operations. Compact geometry and explicit triangle connectivity provide objects that geometric code and scene programs can read and edit.
@@ -157,3 +153,7 @@ is public. A hosted Space is not available yet.
 
 Sho Kuno provided the Exact inference acceleration. Third-party notices and
 DINOv3 terms are retained; see [licenses and dependencies](docs/THIRD_PARTY.md).
+
+## Acknowledgements
+
+MeshAxiom-Base's geometry pipeline is a paper-based reimplementation of the two-stage vertex and topology diffusion framework in [Nexus](https://arxiv.org/abs/2607.13563). MeshAxiom builds on this foundation with Exact inference acceleration, agent/tool interfaces, and downstream 3D workflows. We thank the Nexus authors for their foundational work.

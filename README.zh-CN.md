@@ -6,10 +6,6 @@
 
 本包只提供 **Exact 无损加速推理**。当前 Base 配方为顶点 EMA 100K、拓扑 EMA 10K、VAE EMA 30K，使用 MBR8、20 步和拓扑 CFG 3，接入 Sho Kuno 的 CUDA Graph 与 K/V 缓存实现。模型常驻两个隔离 worker，连续请求复用模型。
 
-## 与 Nexus 的技术关系
-
-MeshAxiom-Base 的几何生成流程基于 [Nexus](https://arxiv.org/abs/2607.13563) 论文，复现其顶点与拓扑两阶段扩散框架。MeshAxiom 在此基础上集成了 Exact 推理加速、Agent 工具接口和下游 3D 工作流。感谢 Nexus 作者的基础工作。
-
 ## 安装与生成
 
 作者加速环境为 Linux、H200、NVIDIA PyTorch 25.03、CUDA 12.8、Python 3.12。建议使用独立环境；其他硬件和软件组合先做一致性验证。
@@ -47,3 +43,7 @@ meshaxiom verify-exact --config models/MeshAxiom-Base/meshaxiom.json --image exa
 Agent 使用 [JSON 工具与 HTTP 接口](docs/AGENT_USAGE.md)。[材质生成](docs/MATERIALS.md) 独立提供，不需要先加载几何模型。Hugging Face 模型与 Space 的准备方法见 [部署说明](docs/HUGGINGFACE.md)。
 
 本目录为代码发布候选；模型库已公开，托管 Space 尚未上线。许可证、真实 Hub revision 和目标机器验收状态见 [发布状态](docs/RELEASE_PREPARATION.md)。
+
+## Acknowledgements
+
+MeshAxiom-Base 的几何生成流程基于 [Nexus](https://arxiv.org/abs/2607.13563) 论文，复现其顶点与拓扑两阶段扩散框架。MeshAxiom 在此基础上集成了 Exact 推理加速、Agent 工具接口和下游 3D 工作流。感谢 Nexus 作者的基础工作。
