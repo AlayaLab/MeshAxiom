@@ -242,5 +242,37 @@
     "Topology and VAE files are unchanged from the prior release.",
     "Earlier 180K paper and speed measurements do not measure the current 100K vertex weights.",
     "Cold Docker build and other GPU stacks require target verification."
+  ],
+  "supplemental_source_reviews": [
+    {
+      "status": "PASS",
+      "reviewed_utc": "2026-10-23T02:33:13.637629+00:00",
+      "source_commit": "94f074a3a06cfbdb7dfa0ad9676b98d149b76242",
+      "scope": "Topology-statistics docstring wording and matching packaged source manifest only; original validation evidence below is retained with its original source identities.",
+      "file": "src/meshaxiom/vendor/recipe/mesh_utils90.py",
+      "previous_validated_sha256": "e55d1fb6f9e8421d538e578348c6b8a13823b5993956dc73cdc104715d278aee",
+      "current_sha256": "a2da702f08f09fb989484806ba162adf82d4b9ac5d1334d37e0d5cff14a9568d",
+      "exact_single_docstring_replacement": true,
+      "executable_ast_unchanged": true,
+      "packaged_manifest_entries_verified": 37,
+      "upstream_source_sha256_preserved": true,
+      "cpu_tests": {
+        "status": "PASS",
+        "suite": "tests/test_geometry_contract.py",
+        "passed": 9,
+        "scope": "Source manifest, architecture import isolation, synthetic checkpoint export and geometry serialization contracts; no trained checkpoints."
+      },
+      "trained_model_inference_runs": 0,
+      "gpu_test_runs": 0,
+      "historical_evidence_preserved": [
+        "cpu_tests",
+        "cpu_vertex_load",
+        "gpu_identity",
+        "weights",
+        "environment",
+        "source_sha256"
+      ],
+      "note": "The historical 95-test and H200 identity results above were not rerun as part of this supplemental review."
+    }
   ]
 }

@@ -257,8 +257,8 @@
       "source_group": "production-recipe",
       "source_sha256": "20077668eb9d92765a9c61cbc83df918b009c4e41db84ddd2c986968ce3bdfc6",
       "packaged_file": "recipe/mesh_utils90.py",
-      "packaged_sha256": "e55d1fb6f9e8421d538e578348c6b8a13823b5993956dc73cdc104715d278aee",
-      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained"
+      "packaged_sha256": "a2da702f08f09fb989484806ba162adf82d4b9ac5d1334d37e0d5cff14a9568d",
+      "modification": "MeshAxiom module and display names; original model/sampling arithmetic retained; neutral topology-statistics docstring; executable AST unchanged"
     },
     {
       "source_group": "production-recipe",
