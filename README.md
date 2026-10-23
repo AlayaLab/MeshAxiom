@@ -74,7 +74,7 @@ records the deployment stack; its cold build and target hardware must be tested.
 ## Load the model
 
 The Hugging Face model payload is prepared separately from this code repository.
-It contains `meshaxiom.json`, three EMA files under `weights/`, and the local
+It contains `config.json`, its compatible `meshaxiom.json` alias, three EMA files under `weights/`, and the local
 DINOv3 architecture/processor configuration. No extra DINOv3 model download is
 needed: the released EMA files already contain those backbone tensors.
 
@@ -88,12 +88,16 @@ with MeshAxiomPipeline.from_pretrained("models/MeshAxiom-Base") as pipeline:
     print(result["artifacts"]["obj"]["path"])
 ```
 
-Load the public Hub repository `AlayaLab/MeshAxiom-Base` at the verified model revision:
+Resolve the public Hub repository once, then pin that full revision for reproducible loads:
 
 ```python
+from huggingface_hub import HfApi
+from meshaxiom import MeshAxiomPipeline
+
+revision = HfApi().model_info("AlayaLab/MeshAxiom-Base").sha
 with MeshAxiomPipeline.from_pretrained(
     "AlayaLab/MeshAxiom-Base",
-    revision="adb65c712a1c603e9792c35fc927399deac03643",
+    revision=revision,
 ) as pipeline:
     first = pipeline.generate("first.png", "outputs/first", face_budget=4000)
     second = pipeline.generate("second.png", "outputs/second", face_budget=8000)

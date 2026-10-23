@@ -39,11 +39,16 @@ with MeshAxiomPipeline.from_pretrained(
     result = model.generate("image.png", "outputs/object", face_budget=4000)
 ```
 
-Install MeshAxiom code version `0.2.0.dev2` for this 100K checkpoint; older
-versions expect different weights. No Hugging Face login is required to download these weights. A local model directory
+Use MeshAxiom code version `0.2.0.dev3` for the standard `config.json` entry point.
+The identical `meshaxiom.json` is retained for version `0.2.0.dev2`; the new loader also accepts older pinned snapshots without `config.json`.
+No Hugging Face login is required to download these weights. A local model directory
 can also be used. This repository supplies model data; the source package supplies
 the inference implementation. `model_index.json` is descriptive metadata, not a
 Diffusers pipeline.
+
+`config.json` contains the actual MeshAxiom inference configuration. Normal Hub
+loads download and read this file; its standard name also enables the Hub's
+download statistics. These statistics are Hub requests, not unique users or completed generations.
 
 Input is a 512×512 RGB image on a black background. The recipe uses MBR8, 20
 DPM++2M steps and topology CFG 3. The requested face budget guides generation;

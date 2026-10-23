@@ -2,7 +2,7 @@
 
 GitHub contains the installable source package. A separate Hub model repository
 contains the three Base EMA files, a model card, checksums, `model_index.json`,
-`meshaxiom.json`, and local DINOv3 configuration/license files. The directory
+`config.json`, its identical `meshaxiom.json` compatibility alias, and local DINOv3 configuration/license files. The directory
 `deploy/huggingface/model` is the small metadata template. The private model
 preparation process fills the final checksums and checks every EMA tensor.
 
@@ -18,14 +18,17 @@ Every tensor, dtype, key and metadata value is checked on readback. The staging
 receipt and `SHA256SUMS` belong with the model payload.
 
 The public model repository is `AlayaLab/MeshAxiom-Base`. No login is required
-to download these weights. Its verified model
-revision is `adb65c712a1c603e9792c35fc927399deac03643`. Consumers can use:
+to download these weights. Resolve its current revision once and reuse that full
+commit SHA for reproducible loads:
 
 ```python
+from huggingface_hub import HfApi
 from meshaxiom import MeshAxiomPipeline
+
+revision = HfApi().model_info("AlayaLab/MeshAxiom-Base").sha
 pipeline = MeshAxiomPipeline.from_pretrained(
     "AlayaLab/MeshAxiom-Base",
-    revision="adb65c712a1c603e9792c35fc927399deac03643",
+    revision=revision,
 )
 ```
 
@@ -33,6 +36,15 @@ The implementation uses `huggingface_hub.snapshot_download` with a fixed data
 allowlist. The returned cache remains read-only; runtime locks and caches are
 outside that snapshot. See the [Hub download documentation](https://huggingface.co/docs/huggingface_hub/guides/download).
 No public ID or revision is fabricated by the preparation code.
+
+Version `0.2.0.dev3` reads `config.json` as the actual inference configuration.
+It falls back to `meshaxiom.json` only when the standard entry is absent, so older
+pinned revisions and local models continue to work. An unreadable or invalid
+standard entry is rejected; when present it takes precedence over the legacy alias.
+Preparation writes both files from one configuration after fixing
+the checkpoint hashes. The model remains a `meshaxiom` library model; it does not
+use a Transformers or Diffusers loader. Normal requests for the standard filename
+allow Hub download statistics, which do not measure unique users or completed generations.
 
 For an interactive Space, use `deploy/huggingface/space`. Its Dockerfile is built
 from the repository root. Copy the Space README/Dockerfile to the new Space root

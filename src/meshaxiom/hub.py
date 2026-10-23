@@ -15,18 +15,33 @@ EXPECTED_WEIGHTS = {
 }
 
 DOWNLOAD_FILES = ["weights/" + row["file"] for row in EXPECTED_WEIGHTS.values()] + [
-    "meshaxiom.json", "model_index.json", "SHA256SUMS", "README.md", "LICENSE.md", "WEIGHTS.json", "VALIDATION.json",
+    "config.json", "meshaxiom.json", "model_index.json", "SHA256SUMS", "README.md", "LICENSE.md", "WEIGHTS.json", "VALIDATION.json",
     "external/dinov3/config.json", "external/dinov3/preprocessor_config.json", "external/dinov3/LICENSE.md",
 ]
+
+
+def _read_model_configuration(directory):
+    canonical = directory / "config.json"
+    legacy = directory / "meshaxiom.json"
+    try:
+        canonical.lstat()
+    except FileNotFoundError:
+        configuration = legacy
+    except OSError as exc:
+        raise MeshAxiomError("Cannot inspect the downloaded model configuration") from exc
+    else:
+        configuration = canonical
+    try:
+        declared = json.loads(configuration.read_text())
+    except (OSError, ValueError) as exc:
+        raise MeshAxiomError("Cannot read the downloaded model configuration") from exc
+    return configuration, declared
 
 
 def model_config(directory, *, device="cuda:0"):
     directory = Path(directory).expanduser().resolve()
     from .config import load_config
-    try:
-        declared = json.loads((directory / "meshaxiom.json").read_text())
-    except (OSError, ValueError) as exc:
-        raise MeshAxiomError("Cannot read the downloaded model configuration") from exc
+    configuration, declared = _read_model_configuration(directory)
     declared_geometry = declared.get("geometry", {}) if isinstance(declared, dict) else {}
     if not isinstance(declared_geometry, dict):
         raise MeshAxiomError("Model geometry configuration must be an object")
@@ -37,7 +52,7 @@ def model_config(directory, *, device="cuda:0"):
         _require_snapshot_entry(row.get("path") if isinstance(row, dict) else None,
                                 Path("weights") / expected["file"])
     _require_snapshot_entry(declared_geometry.get("image_model"), Path("external/dinov3"))
-    config = load_config(directory / "meshaxiom.json")
+    config = load_config(configuration)
     geometry = config.get("geometry", {})
     if geometry.get("implementation") != "exact":
         raise MeshAxiomError("This release supports only the Exact implementation")

@@ -85,7 +85,9 @@ def prepare(weights, output, *, link=False):
     config = json.loads((output / "meshaxiom.json").read_text())
     for row in reports:
         config["geometry"][row["kind"] + "_checkpoint"]["sha256"] = row["sha256"]
-    (output / "meshaxiom.json").write_text(json.dumps(config, indent=2) + "\n")
+    configuration = json.dumps(config, indent=2) + "\n"
+    (output / "config.json").write_text(configuration)
+    (output / "meshaxiom.json").write_text(configuration)
     files = [p for p in output.rglob("*") if p.is_file() and p.name != "SHA256SUMS"]
     (output / "SHA256SUMS").write_text("".join(digest(p) + "  " + str(p.relative_to(output)) + "\n" for p in sorted(files)))
     return manifest
