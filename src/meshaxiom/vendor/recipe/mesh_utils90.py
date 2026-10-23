@@ -21,7 +21,7 @@ def canonical_faces(faces):
 
 
 def mesh_stats(vertices, faces):
-    """Topology-quality numbers shared by our meshes and the Tripo meshes (all exact, set-based)."""
+    """Compute exact, set-based topology statistics for a triangle mesh."""
     v = np.asarray(vertices, dtype=np.float64); f = canonical_faces(faces); n = len(v)
     out = dict(vertices=int(n), faces=int(len(f)))
     if not len(f):
